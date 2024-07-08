@@ -10,7 +10,7 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author User
  */
-public class VendedorControle extends AbstractTableModel{
+public class PedidoControle extends AbstractTableModel{
 
     @Override
     public int getRowCount() {

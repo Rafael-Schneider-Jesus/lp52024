@@ -4,10 +4,27 @@
  */
 package viewControle;
 
+import javax.swing.table.AbstractTableModel;
+
 /**
  *
  * @author User
  */
-public class VendaControle {
+public class VendaControle extends AbstractTableModel{
+
+    @Override
+    public int getRowCount() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public int getColumnCount() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }
