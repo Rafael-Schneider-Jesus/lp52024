@@ -24,13 +24,15 @@ public class Util {
     }
     
     public static void limp(JComponent ... vetComp) {
-        for (JComponent componente : vetComp) {
-            switch (componente) {
-                case JTextField objeto -> objeto.setText("");
-                case JComboBox objeto -> objeto.setSelectedItem(-1);
-                case JCheckBox objeto -> objeto.setSelected(false);
-                default -> {
-                }
+        for (int i = 0; i < vetComp.length; i++) {
+           if (vetComp[i] instanceof JTextField){
+           ( (JTextField) vetComp[i]).setText("");
+           }
+           if (vetComp[i] instanceof JComboBox){
+           ((JComboBox)vetComp[i]).setSelectedIndex(-1);
+           }
+           if ( vetComp[i] instanceof JCheckBox) {
+             ((JCheckBox) vetComp[i]).setSelected(false);
             }
         }
     }

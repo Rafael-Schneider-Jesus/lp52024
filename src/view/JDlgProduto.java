@@ -4,6 +4,9 @@
  */
 package view;
 
+import viewPesquisa.JDlgProdutoPesquisa;
+import viewPesquisa.JDlgUsuariosPesquisa;
+
 /**
  *
  * @author User
@@ -16,7 +19,13 @@ public class JDlgProduto extends javax.swing.JDialog {
     public JDlgProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-         tools.Util.habilitar(false,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jbtnExcluir,jBtnComfirmar,jBtnCancelar,jBtnAlterar);
+        setTitle("Produto");
+        setLocationRelativeTo(null);
+         tools.Util.habilitar(false,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jbtnExcluir,jBtnComfirmar,jBtnCancelar,jBtnAlterar,jCboEntrega);
+    }
+
+    JDlgProduto() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -42,6 +51,8 @@ public class JDlgProduto extends javax.swing.JDialog {
         jCbocopo = new javax.swing.JComboBox<>();
         jCbotamanho = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jCboEntrega = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -122,6 +133,10 @@ public class JDlgProduto extends javax.swing.JDialog {
 
         jLabel5.setText("sabor");
 
+        jLabel2.setText("entrega");
+
+        jCboEntrega.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "sim", "nao", " " }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -158,7 +173,12 @@ public class JDlgProduto extends javax.swing.JDialog {
                                 .addGap(14, 14, 14)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
-                                    .addComponent(jCbotamanho, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                    .addComponent(jCbotamanho, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jCboEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -172,7 +192,7 @@ public class JDlgProduto extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtxtsabor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4))
@@ -181,6 +201,10 @@ public class JDlgProduto extends javax.swing.JDialog {
                     .addComponent(jCbocopo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCbotamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCboEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtnExcluir)
                     .addComponent(jBtnAlterar)
@@ -190,7 +214,7 @@ public class JDlgProduto extends javax.swing.JDialog {
                     .addComponent(jBtnComfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBtnCancelar)
                     .addComponent(jBtnIncluir))
-                .addGap(63, 63, 63))
+                .addContainerGap())
         );
 
         pack();
@@ -205,35 +229,42 @@ public class JDlgProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_jtxtsaborActionPerformed
 
     private void jbtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExcluirActionPerformed
-      tools.Util.limp(jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor);
-        tools.Util.habilitar(false,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jBtnComfirmar,jBtnCancelar,jbtnExcluir, jBtnAlterar);
+      tools.Util.limp(jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jCboEntrega);
+        tools.Util.habilitar(false,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jBtnComfirmar,jBtnCancelar,jbtnExcluir, jBtnAlterar, jCboEntrega);
       tools.Util.habilitar(true, jBtnpesquisar,jBtnIncluir);
+       
+      tools.Util.perguntar(null);
     }//GEN-LAST:event_jbtnExcluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-   tools.Util.habilitar(true,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jBtnComfirmar);
+   tools.Util.habilitar(true,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jBtnComfirmar,jCboEntrega);
    tools.Util.habilitar(false,jBtnpesquisar, jBtnIncluir, jBtnAlterar, jbtnExcluir);
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnpesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnpesquisarActionPerformed
-  tools.Util.habilitar(true,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jbtnExcluir,jBtnComfirmar,jBtnCancelar,jBtnAlterar);
+        JDlgProdutoPesquisa jDlgProdutoPesquisa = new JDlgProdutoPesquisa(null, true);
+        jDlgProdutoPesquisa.setTelaAnterior(this);        
+        jDlgProdutoPesquisa.setVisible(true);
+        
+        
+  tools.Util.habilitar(true,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jbtnExcluir,jBtnComfirmar,jBtnCancelar,jBtnAlterar,jCboEntrega);
   tools.Util.habilitar(false,jBtnpesquisar, jBtnComfirmar, jBtnIncluir);
     }//GEN-LAST:event_jBtnpesquisarActionPerformed
 
     private void jBtnComfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnComfirmarActionPerformed
-      tools.Util.limp(jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor);
-      tools.Util.habilitar(false,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jBtnComfirmar,jBtnCancelar,jbtnExcluir);
+      tools.Util.limp(jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jCboEntrega);
+      tools.Util.habilitar(false,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jBtnComfirmar,jBtnCancelar,jbtnExcluir,jCboEntrega);
       tools.Util.habilitar(true, jBtnpesquisar,jBtnIncluir);
     }//GEN-LAST:event_jBtnComfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-      tools.Util.limp(jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor);
-      tools.Util.habilitar(false,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jBtnComfirmar,jBtnCancelar,jbtnExcluir);
+      tools.Util.limp(jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor,jCboEntrega);
+      tools.Util.habilitar(false,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jBtnComfirmar,jBtnCancelar,jbtnExcluir,jCboEntrega);
       tools.Util.habilitar(true, jBtnpesquisar,jBtnIncluir);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
-    tools.Util.habilitar(true,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jBtnComfirmar, jBtnCancelar);
+    tools.Util.habilitar(true,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jBtnComfirmar, jBtnCancelar,jCboEntrega);
     tools.Util.habilitar(false, jBtnpesquisar, jBtnIncluir);
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
@@ -289,9 +320,11 @@ public class JDlgProduto extends javax.swing.JDialog {
     private javax.swing.JButton jBtnComfirmar;
     private javax.swing.JButton jBtnIncluir;
     private javax.swing.JButton jBtnpesquisar;
+    private javax.swing.JComboBox<String> jCboEntrega;
     private javax.swing.JComboBox<String> jCbocopo;
     private javax.swing.JComboBox<String> jCbotamanho;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

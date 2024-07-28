@@ -4,6 +4,8 @@
  */
 package view;
 
+import viewPesquisa.JDlgUsuariosPesquisa;
+
 /**
  *
  * @author User
@@ -18,6 +20,8 @@ public class JDlgUsuarios extends javax.swing.JDialog {
     public JDlgUsuarios(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setTitle("Usuarios");
+        setLocationRelativeTo(null);
         tools.Util.habilitar(false,jBtnExlcuir, jBtnCancelar,jBtnAlterar,jTxtNome, jTxtApelido,jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha,jBtnConfirmar);
     }
 
@@ -259,7 +263,11 @@ public class JDlgUsuarios extends javax.swing.JDialog {
     }//GEN-LAST:event_jPwfSenhaActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
-   tools.Util.habilitar(true ,jBtnCancelar,jBtnExlcuir,jBtnAlterar);
+        JDlgUsuariosPesquisa jDlgUsuariosPesquisa = new JDlgUsuariosPesquisa(null, true);
+        jDlgUsuariosPesquisa.setTelaAnterior(this);        
+        jDlgUsuariosPesquisa.setVisible(true);
+        
+        tools.Util.habilitar(true ,jBtnCancelar,jBtnExlcuir,jBtnAlterar);
       tools.Util.habilitar(false, jBtnPesquisar,jBtnIncluir,jTxtNome, jTxtApelido,jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha,jBtnConfirmar);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
@@ -285,6 +293,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
   tools.Util.limp(jTxtNome, jTxtApelido,jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha); 
   tools.Util.habilitar(false,jBtnExlcuir, jBtnCancelar,jBtnAlterar,jTxtNome, jTxtApelido,jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha,jBtnConfirmar);
   tools.Util.habilitar(true,jBtnPesquisar,jBtnIncluir);
+tools.Util.perguntar(null);
     }//GEN-LAST:event_jBtnExlcuirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed

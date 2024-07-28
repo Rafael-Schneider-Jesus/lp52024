@@ -4,6 +4,8 @@
  */
 package view;
 
+import viewPesquisa.JDlgClientePesquisa;
+
 /**
  *
  * @author User
@@ -16,6 +18,8 @@ public class JDlgcliente extends javax.swing.JDialog {
     public JDlgcliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setTitle("Clientes");
+        setLocationRelativeTo(null);
         tools.Util.habilitar(false,jTxtCep,jTxtCidade,jTxtEmail,jTxtId,jTxtNome, jTxtRenda, jTxtSobre, jTxtendereco, jTxtnumero, jTxtprof, jCboEstado, jCboGenero, jFmtnasc,jFmtTelefone,jFmtCadastro, jbtnExcluir,jBtnComfirmar,jBtnCancelar,jBtnAlterar);
     }
 
@@ -339,7 +343,11 @@ public class JDlgcliente extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnpesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnpesquisarActionPerformed
-        // TODO add your handling code here:
+        JDlgClientePesquisa jDlgClientePesquisa = new JDlgClientePesquisa(null, true);
+        jDlgClientePesquisa.setTelaAnterior(this);        
+        jDlgClientePesquisa.setVisible(true);
+        
+        
   tools.Util.habilitar(true,jBtnCancelar,jBtnAlterar, jbtnExcluir);
   tools.Util.habilitar(false,jBtnpesquisar, jBtnComfirmar, jBtnIncluir,jTxtCep,jTxtCidade,jTxtEmail,jTxtId,jTxtNome, jTxtRenda, jTxtSobre, jTxtendereco, jTxtnumero, jTxtprof, jCboEstado, jCboGenero, jFmtnasc,jFmtTelefone,jFmtCadastro,jBtnComfirmar);
     }//GEN-LAST:event_jBtnpesquisarActionPerformed
@@ -365,6 +373,7 @@ public class JDlgcliente extends javax.swing.JDialog {
     tools.Util.limp(jTxtCep,jTxtCidade,jTxtEmail,jTxtId,jTxtNome, jTxtRenda, jTxtSobre, jTxtendereco, jTxtnumero, jTxtprof, jCboEstado, jCboGenero, jFmtnasc,jFmtTelefone,jFmtCadastro);
            tools.Util.habilitar(false,jTxtCep,jTxtCidade,jTxtEmail,jTxtId,jTxtNome, jTxtRenda, jTxtSobre, jTxtendereco, jTxtnumero, jTxtprof, jCboEstado, jCboGenero, jFmtnasc,jFmtTelefone,jFmtCadastro, jBtnComfirmar,jBtnCancelar,jbtnExcluir, jBtnAlterar);
       tools.Util.habilitar(true, jBtnpesquisar,jBtnIncluir);
+tools.Util.perguntar(null);
     }//GEN-LAST:event_jbtnExcluirActionPerformed
 
     private void jTxtSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtSobreActionPerformed

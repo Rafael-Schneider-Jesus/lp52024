@@ -4,20 +4,31 @@
  */
 package viewPesquisa;
 
+import view.JDlgProduto;
+import viewControle.ProdutoControle;
+
 /**
  *
  * @author User
  */
 public class JDlgProdutoPesquisa extends javax.swing.JDialog {
-
+    private JDlgProduto jDlgProduto;
     /**
      * Creates new form JDlgProdutoPesquisa
      */
     public JDlgProdutoPesquisa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        
+        setLocationRelativeTo(null);
+        setTitle("Consulta de Produto");
+        ProdutoControle produtoControle = new ProdutoControle();
+        jTable1.setModel(produtoControle); 
     }
-
+       public void setTelaAnterior(JDlgProduto jDlgProduto) {
+        this.jDlgProduto = jDlgProduto;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,9 +60,19 @@ public class JDlgProdutoPesquisa extends javax.swing.JDialog {
 
         jBtnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/incluir.png"))); // NOI18N
         jBtnOk.setText("OK");
+        jBtnOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnOkActionPerformed(evt);
+            }
+        });
 
         jBtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar.png"))); // NOI18N
         jBtnCancelar.setText("cancelar");
+        jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -77,6 +98,14 @@ public class JDlgProdutoPesquisa extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
+       setVisible(false);
+    }//GEN-LAST:event_jBtnOkActionPerformed
+
+    private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
+       setVisible(false);
+    }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**
      * @param args the command line arguments

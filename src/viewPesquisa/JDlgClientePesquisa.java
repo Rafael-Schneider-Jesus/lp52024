@@ -4,18 +4,31 @@
  */
 package viewPesquisa;
 
+import view.JDlgcliente;
+import viewControle.ClienteControle;
+
 /**
  *
  * @author User
  */
 public class JDlgClientePesquisa extends javax.swing.JDialog {
-
+    private JDlgcliente jDlgcliente;
     /**
      * Creates new form JDlgClientePesquisa
      */
     public JDlgClientePesquisa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        
+        setLocationRelativeTo(null);
+        setTitle("Consulta de Produto");
+        ClienteControle clienteControle = new ClienteControle();
+        jTable1.setModel(clienteControle);
+    }
+    
+           public void setTelaAnterior(JDlgcliente jDlgcliente) {
+        this.jDlgcliente = jDlgcliente;
     }
 
     /**
@@ -49,9 +62,19 @@ public class JDlgClientePesquisa extends javax.swing.JDialog {
 
         jBtnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/incluir.png"))); // NOI18N
         jBtnOk.setText("OK");
+        jBtnOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnOkActionPerformed(evt);
+            }
+        });
 
         jBtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar.png"))); // NOI18N
         jBtnCancelar.setText("cancelar");
+        jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -77,6 +100,14 @@ public class JDlgClientePesquisa extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
+        setVisible(false);
+    }//GEN-LAST:event_jBtnOkActionPerformed
+
+    private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
+       setVisible(false);
+    }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**
      * @param args the command line arguments

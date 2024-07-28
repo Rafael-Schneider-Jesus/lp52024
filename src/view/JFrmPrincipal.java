@@ -16,6 +16,8 @@ public class JFrmPrincipal extends javax.swing.JFrame {
      */
     public JFrmPrincipal() {
         initComponents();
+        setTitle("Principal");
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -65,15 +67,35 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMenu1.add(jProduto);
 
         jUsuarios.setText("Usuarios");
+        jUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jUsuariosActionPerformed(evt);
+            }
+        });
         jMenu1.add(jUsuarios);
 
         jVendedor.setText("Vendedor");
+        jVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jVendedorActionPerformed(evt);
+            }
+        });
         jMenu1.add(jVendedor);
 
         jCliente.setText("Cliente");
+        jCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jClienteActionPerformed(evt);
+            }
+        });
         jMenu1.add(jCliente);
 
         jSair.setText("sair");
+        jSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSairActionPerformed(evt);
+            }
+        });
         jMenu1.add(jSair);
 
         jMenuBar1.add(jMenu1);
@@ -81,13 +103,18 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMenu2.setText("Movimentos");
 
         jVenda.setText("venda");
+        jVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jVendaActionPerformed(evt);
+            }
+        });
         jMenu2.add(jVenda);
 
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Consultas");
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setText("Usuarios");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,7 +148,33 @@ public class JFrmPrincipal extends javax.swing.JFrame {
 
     private void jProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jProdutoActionPerformed
         // TODO add your handling code here:
+         JDlgProduto jDlgProduto = new JDlgProduto(this, true);
+          jDlgProduto.setVisible(true);
     }//GEN-LAST:event_jProdutoActionPerformed
+
+    private void jUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUsuariosActionPerformed
+        JDlgUsuarios jDlgUsuarios = new JDlgUsuarios(this, true);
+        jDlgUsuarios.setVisible(true);
+    }//GEN-LAST:event_jUsuariosActionPerformed
+
+    private void jVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVendedorActionPerformed
+       JDlgVendedor jDlgVendedor = new JDlgVendedor(this, true);
+        jDlgVendedor.setVisible(true);
+    }//GEN-LAST:event_jVendedorActionPerformed
+
+    private void jClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jClienteActionPerformed
+               JDlgcliente jDlgcliente = new JDlgcliente(this, true);
+        jDlgcliente.setVisible(true);
+    }//GEN-LAST:event_jClienteActionPerformed
+
+    private void jSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairActionPerformed
+         System.exit(0);
+    }//GEN-LAST:event_jSairActionPerformed
+
+    private void jVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVendaActionPerformed
+        JDlgVenda jDlgVendass = new JDlgVenda(this, true);
+        jDlgVendass.setVisible(true);
+    }//GEN-LAST:event_jVendaActionPerformed
 
     /**
      * @param args the command line arguments
