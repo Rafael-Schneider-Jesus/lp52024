@@ -21,7 +21,7 @@ public abstract class DAO_Abstract{
     }
     
     
-    public abstract void insert(Object object);
+    public abstract void insert (Object object);
     public abstract void upedate(Object object);
     public abstract void delete(Object object);
     public abstract Object list(int id);

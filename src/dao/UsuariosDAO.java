@@ -6,12 +6,15 @@
 package dao;
 
 import java.util.List;
+import org.hibernate.Criteria;
+import bean.UsuarioRsj;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
  * @author dell
  */
-public class UsuariosDAO extends DAO_Abstract{
+public class UsuariosDAO extends DAO_Abstract {
 
     @Override
     public void insert(Object object) {
@@ -40,12 +43,21 @@ public class UsuariosDAO extends DAO_Abstract{
 
     @Override
     public Object list(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(UsuarioRsj.class);
+        criteria.add(Restrictions.eq("idusuarioRsj", id));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista.get(0);
     }
 
     @Override
     public List listAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(UsuarioRsj.class);
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
     }
-    
+
 }

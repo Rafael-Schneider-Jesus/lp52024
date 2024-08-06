@@ -15,14 +15,14 @@ public class VendedorDAO extends DAO_Abstract{
 
     @Override
     public void insert(Object object) {
-                session.beginTransaction();
+        session.beginTransaction();
         session.save(object);
         session.getTransaction().commit();
     }
 
     @Override
     public void upedate(Object object) {
-                session.beginTransaction();
+        session.beginTransaction();
         session.flush();
         session.clear();
         session.update(object);
@@ -31,7 +31,7 @@ public class VendedorDAO extends DAO_Abstract{
 
     @Override
     public void delete(Object object) {
-               session.beginTransaction();
+        session.beginTransaction();
         session.flush();
         session.clear();
         session.delete(object);

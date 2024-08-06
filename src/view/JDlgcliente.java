@@ -4,6 +4,8 @@
  */
 package view;
 
+import bean.ClienteRsj;
+import dao.ClienteDAO;
 import viewPesquisa.JDlgClientePesquisa;
 
 /**
@@ -11,17 +13,67 @@ import viewPesquisa.JDlgClientePesquisa;
  * @author User
  */
 public class JDlgcliente extends javax.swing.JDialog {
-
+ClienteDAO clienteDAO;
     /**
      * Creates new form JDlgcliente
      */
     public JDlgcliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+         clienteDAO = new ClienteDAO();
         setTitle("Clientes");
         setLocationRelativeTo(null);
-        tools.Util.habilitar(false,jTxtCep,jTxtCidade,jTxtEmail,jTxtId,jTxtNome, jTxtRenda, jTxtSobre, jTxtendereco, jTxtnumero, jTxtprof, jCboEstado, jCboGenero, jFmtnasc,jFmtTelefone,jFmtCadastro, jbtnExcluir,jBtnComfirmar,jBtnCancelar,jBtnAlterar);
+        tools.Util.habilitar(false, jTxtCep, jTxtCidade, jTxtEmail, jTxtId, jTxtNome, jTxtRenda, jTxtSobre, jTxtendereco, jTxtnumero, jTxtprof, jCboEstado, jCboGenero, jFmtnasc, jFmtTelefone, jFmtCadastro, jbtnExcluir, jBtnComfirmar, jBtnCancelar, jBtnAlterar);
     }
+
+    public void beanView(ClienteRsj clienteRsj) {
+        jTxtId.setText(tools.Util.intStr(clienteRsj.getIdclienteRsj()));
+        jTxtNome.setText(clienteRsj.getNomeRsj());
+        jTxtSobre.setText(clienteRsj.getSobrenomeRsj());
+        jTxtEmail.setText(clienteRsj.getEmailRsj());
+        jTxtCidade.setText(clienteRsj.getCidadeRsj());
+        jTxtCep.setText(clienteRsj.getCepRsj());
+        jTxtprof.setText(clienteRsj.getCepRsj());
+        jFmtTelefone.setText(clienteRsj.getTelefoneRsj());
+        jTxtnumero.setText(tools.Util.intStr(clienteRsj.getNumerodependentesRsj()));
+        jTxtRenda.setText(tools.Util.intStr(clienteRsj.getRendaanualRsj()));
+        jTxtendereco.setText(clienteRsj.getEnderecoRsj());
+        jFmtnasc.setText(tools.Util.dateStr(clienteRsj.getDatanascimentoRsj()));
+        jFmtCadastro.setText(tools.Util.dateStr(clienteRsj.getDatacadastroRsj()));
+        jCboEstado.setSelectedIndex(clienteRsj.getEstadocivilRsj());
+        jCboGenero.setSelectedIndex(clienteRsj.getGeneroRsj());
+    }
+    public ClienteRsj viewBean() {
+        ClienteRsj clienteRsj = new ClienteRsj(); // criou o bean
+        
+        clienteRsj.setIdclienteRsj(tools.Util.strInt(jTxtId.getText()));
+        clienteRsj.setNomeRsj(jTxtNome.getText());
+        clienteRsj.setSobrenomeRsj(jTxtSobre.getText());
+        clienteRsj.setEmailRsj(jTxtEmail.getText());
+        clienteRsj.setCidadeRsj(jTxtCidade.getText());
+        clienteRsj.setCepRsj(jTxtCep.getText());
+        clienteRsj.setProfissaoRsj(jTxtprof.getText());
+        clienteRsj.setTelefoneRsj(jFmtTelefone.getText());
+        clienteRsj.setNumerodependentesRsj(tools.Util.strInt(jTxtnumero.getText()));
+        clienteRsj.setRendaanualRsj(tools.Util.strInt(jTxtRenda.getText()));
+        clienteRsj.setEnderecoRsj(jTxtendereco.getText());
+       clienteRsj.setDatacadastroRsj(tools.Util.strDate(jFmtCadastro.getText()));
+       clienteRsj.setDatanascimentoRsj(tools.Util.strDate(jFmtnasc.getText()));
+       clienteRsj.setEstadocivilRsj(jCboEstado.getSelectedIndex());
+       clienteRsj.setGeneroRsj(jCboGenero.getSelectedIndex());
+        
+
+    
+        return clienteRsj;
+    };
+    
+    
+    
+    
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -338,42 +390,42 @@ public class JDlgcliente extends javax.swing.JDialog {
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
-     tools.Util.habilitar(true,jTxtCep,jTxtCidade,jTxtEmail,jTxtId,jTxtNome, jTxtRenda, jTxtSobre, jTxtendereco, jTxtnumero, jTxtprof, jCboEstado, jCboGenero, jFmtnasc,jFmtTelefone,jFmtCadastro, jBtnComfirmar);
-   tools.Util.habilitar(false,jBtnpesquisar, jBtnIncluir, jBtnAlterar, jbtnExcluir);
+        tools.Util.habilitar(true, jTxtCep, jTxtCidade, jTxtEmail, jTxtId, jTxtNome, jTxtRenda, jTxtSobre, jTxtendereco, jTxtnumero, jTxtprof, jCboEstado, jCboGenero, jFmtnasc, jFmtTelefone, jFmtCadastro, jBtnComfirmar);
+        tools.Util.habilitar(false, jBtnpesquisar, jBtnIncluir, jBtnAlterar, jbtnExcluir);
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnpesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnpesquisarActionPerformed
         JDlgClientePesquisa jDlgClientePesquisa = new JDlgClientePesquisa(null, true);
-        jDlgClientePesquisa.setTelaAnterior(this);        
+        jDlgClientePesquisa.setTelaAnterior(this);
         jDlgClientePesquisa.setVisible(true);
-        
-        
-  tools.Util.habilitar(true,jBtnCancelar,jBtnAlterar, jbtnExcluir);
-  tools.Util.habilitar(false,jBtnpesquisar, jBtnComfirmar, jBtnIncluir,jTxtCep,jTxtCidade,jTxtEmail,jTxtId,jTxtNome, jTxtRenda, jTxtSobre, jTxtendereco, jTxtnumero, jTxtprof, jCboEstado, jCboGenero, jFmtnasc,jFmtTelefone,jFmtCadastro,jBtnComfirmar);
+
+        tools.Util.habilitar(true, jBtnCancelar, jBtnAlterar, jbtnExcluir);
+        tools.Util.habilitar(false, jBtnpesquisar, jBtnComfirmar, jBtnIncluir, jTxtCep, jTxtCidade, jTxtEmail, jTxtId, jTxtNome, jTxtRenda, jTxtSobre, jTxtendereco, jTxtnumero, jTxtprof, jCboEstado, jCboGenero, jFmtnasc, jFmtTelefone, jFmtCadastro, jBtnComfirmar);
     }//GEN-LAST:event_jBtnpesquisarActionPerformed
 
     private void jBtnComfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnComfirmarActionPerformed
-    tools.Util.limp(jTxtCep,jTxtCidade,jTxtEmail,jTxtId,jTxtNome, jTxtRenda, jTxtSobre, jTxtendereco, jTxtnumero, jTxtprof, jCboEstado, jCboGenero, jFmtnasc,jFmtTelefone,jFmtCadastro); 
-   tools.Util.habilitar(false,jTxtCep,jTxtCidade,jTxtEmail,jTxtId,jTxtNome, jTxtRenda, jTxtSobre, jTxtendereco, jTxtnumero, jTxtprof, jCboEstado, jCboGenero, jFmtnasc,jFmtTelefone,jFmtCadastro, jBtnComfirmar,jBtnCancelar,jbtnExcluir);
-      tools.Util.habilitar(true, jBtnpesquisar,jBtnIncluir);
+         clienteDAO.insert(viewBean());
+        tools.Util.limp(jTxtCep, jTxtCidade, jTxtEmail, jTxtId, jTxtNome, jTxtRenda, jTxtSobre, jTxtendereco, jTxtnumero, jTxtprof, jCboEstado, jCboGenero, jFmtnasc, jFmtTelefone, jFmtCadastro);
+        tools.Util.habilitar(false, jTxtCep, jTxtCidade, jTxtEmail, jTxtId, jTxtNome, jTxtRenda, jTxtSobre, jTxtendereco, jTxtnumero, jTxtprof, jCboEstado, jCboGenero, jFmtnasc, jFmtTelefone, jFmtCadastro, jBtnComfirmar, jBtnCancelar, jbtnExcluir);
+        tools.Util.habilitar(true, jBtnpesquisar, jBtnIncluir);
     }//GEN-LAST:event_jBtnComfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-    tools.Util.limp(jTxtCep,jTxtCidade,jTxtEmail,jTxtId,jTxtNome, jTxtRenda, jTxtSobre, jTxtendereco, jTxtnumero, jTxtprof, jCboEstado, jCboGenero, jFmtnasc,jFmtTelefone,jFmtCadastro); 
-     tools.Util.habilitar(false,jTxtCep,jTxtCidade,jTxtEmail,jTxtId,jTxtNome, jTxtRenda, jTxtSobre, jTxtendereco, jTxtnumero, jTxtprof, jCboEstado, jCboGenero, jFmtnasc,jFmtTelefone,jFmtCadastro, jBtnComfirmar,jBtnCancelar,jbtnExcluir);
-      tools.Util.habilitar(true, jBtnpesquisar,jBtnIncluir);
+        tools.Util.limp(jTxtCep, jTxtCidade, jTxtEmail, jTxtId, jTxtNome, jTxtRenda, jTxtSobre, jTxtendereco, jTxtnumero, jTxtprof, jCboEstado, jCboGenero, jFmtnasc, jFmtTelefone, jFmtCadastro);
+        tools.Util.habilitar(false, jTxtCep, jTxtCidade, jTxtEmail, jTxtId, jTxtNome, jTxtRenda, jTxtSobre, jTxtendereco, jTxtnumero, jTxtprof, jCboEstado, jCboGenero, jFmtnasc, jFmtTelefone, jFmtCadastro, jBtnComfirmar, jBtnCancelar, jbtnExcluir);
+        tools.Util.habilitar(true, jBtnpesquisar, jBtnIncluir);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
-        tools.Util.habilitar(true,jTxtCep,jTxtCidade,jTxtEmail,jTxtId,jTxtNome, jTxtRenda, jTxtSobre, jTxtendereco, jTxtnumero, jTxtprof, jCboEstado, jCboGenero, jFmtnasc,jFmtTelefone,jFmtCadastro, jBtnComfirmar, jBtnCancelar);
-    tools.Util.habilitar(false, jBtnpesquisar, jBtnIncluir);
+        tools.Util.habilitar(true, jTxtCep, jTxtCidade, jTxtEmail, jTxtId, jTxtNome, jTxtRenda, jTxtSobre, jTxtendereco, jTxtnumero, jTxtprof, jCboEstado, jCboGenero, jFmtnasc, jFmtTelefone, jFmtCadastro, jBtnComfirmar, jBtnCancelar);
+        tools.Util.habilitar(false, jBtnpesquisar, jBtnIncluir);
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jbtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExcluirActionPerformed
-    tools.Util.limp(jTxtCep,jTxtCidade,jTxtEmail,jTxtId,jTxtNome, jTxtRenda, jTxtSobre, jTxtendereco, jTxtnumero, jTxtprof, jCboEstado, jCboGenero, jFmtnasc,jFmtTelefone,jFmtCadastro);
-           tools.Util.habilitar(false,jTxtCep,jTxtCidade,jTxtEmail,jTxtId,jTxtNome, jTxtRenda, jTxtSobre, jTxtendereco, jTxtnumero, jTxtprof, jCboEstado, jCboGenero, jFmtnasc,jFmtTelefone,jFmtCadastro, jBtnComfirmar,jBtnCancelar,jbtnExcluir, jBtnAlterar);
-      tools.Util.habilitar(true, jBtnpesquisar,jBtnIncluir);
-tools.Util.perguntar(null);
+        tools.Util.limp(jTxtCep, jTxtCidade, jTxtEmail, jTxtId, jTxtNome, jTxtRenda, jTxtSobre, jTxtendereco, jTxtnumero, jTxtprof, jCboEstado, jCboGenero, jFmtnasc, jFmtTelefone, jFmtCadastro);
+        tools.Util.habilitar(false, jTxtCep, jTxtCidade, jTxtEmail, jTxtId, jTxtNome, jTxtRenda, jTxtSobre, jTxtendereco, jTxtnumero, jTxtprof, jCboEstado, jCboGenero, jFmtnasc, jFmtTelefone, jFmtCadastro, jBtnComfirmar, jBtnCancelar, jbtnExcluir, jBtnAlterar);
+        tools.Util.habilitar(true, jBtnpesquisar, jBtnIncluir);
+        tools.Util.perguntar(null);
     }//GEN-LAST:event_jbtnExcluirActionPerformed
 
     private void jTxtSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtSobreActionPerformed

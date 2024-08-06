@@ -4,6 +4,8 @@
  */
 package view;
 
+import dao.ProdutoDAO;
+import bean.ProdutoRsj;
 import viewPesquisa.JDlgProdutoPesquisa;
 import viewPesquisa.JDlgUsuariosPesquisa;
 
@@ -12,7 +14,7 @@ import viewPesquisa.JDlgUsuariosPesquisa;
  * @author User
  */
 public class JDlgProduto extends javax.swing.JDialog {
-
+ ProdutoDAO produtoDAO;
     /**
      * Creates new form JDlgProduto
      */
@@ -23,6 +25,30 @@ public class JDlgProduto extends javax.swing.JDialog {
         setLocationRelativeTo(null);
          tools.Util.habilitar(false,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jbtnExcluir,jBtnComfirmar,jBtnCancelar,jBtnAlterar,jCboEntrega);
     }
+    
+    public void beanView(ProdutoRsj produtoRsj){
+        jtxtCodigo.setText(tools.Util.intStr(produtoRsj.getIdprodutoRsj()));
+        jtxtsabor.setText(produtoRsj.getSaborRsj());
+      // jCboEntrega.setSelectedIndex(produtoRsj.getEntregaRsj());
+       //jCbocopo.setSelectedIndex(produtoRsj.getCopooucasquinhaRsj());
+       //jCbotamanho.setSelectedIndex(produtoRsj.getTamanhoRsj());
+    }
+    public ProdutoRsj viewBean() {
+        ProdutoRsj produtoRsj = new ProdutoRsj();  
+        produtoRsj.setIdprodutoRsj(tools.Util.strInt(jtxtCodigo.getText()));
+        produtoRsj.setSaborRsj(jtxtsabor.getText());
+       // produtoRsj.setEntregaRsj(jCboEntrega.getSelectedIndex());
+       // produtoRsj.setCopooucasquinhaRsj(jCbocopo.getSelectedIndex());
+       //produtoRsj.setTamanhoRsj(jCbotamanho.getSelectedIndex());
+        return produtoRsj;
+    }
+    
+    
+    
+    
+    
+    
+    
 
     JDlgProduto() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -252,7 +278,8 @@ public class JDlgProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnpesquisarActionPerformed
 
     private void jBtnComfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnComfirmarActionPerformed
-      tools.Util.limp(jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jCboEntrega);
+      produtoDAO.insert(viewBean());
+        tools.Util.limp(jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jCboEntrega);
       tools.Util.habilitar(false,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jBtnComfirmar,jBtnCancelar,jbtnExcluir,jCboEntrega);
       tools.Util.habilitar(true, jBtnpesquisar,jBtnIncluir);
     }//GEN-LAST:event_jBtnComfirmarActionPerformed

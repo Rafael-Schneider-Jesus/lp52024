@@ -3,27 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/viewPesquisa/JDlgUsuariosPesquisa.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/viewPesquisa/JDlgClientePesquisa.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/viewPesquisa/JDlgProdutoPesquisa.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/viewPesquisa/JDlgVendaPesquisa.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/viewControle/VendaControle.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/consulta/JDlgUsuariosConsulta.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/viewControle/UsuariosControle.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/viewControle/PedidoControle.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/view/JDlgVenda.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/viewControle/ClienteControle.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/viewControle/VendedorControle.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/consulta/JDlgVendedorConsulta.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/viewControle/ProdutoControle.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/viewPesquisa/JDlgVendedorPesquisa.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/consulta/JDlgProdutoConsulta.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/bean/ClienteRsj.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/bean/VendedorRsj.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/view/JDlgPedido.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/dao/DAO_Abstract.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/bean/VendaprodutoRsj.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/consulta/JDlgClienteConsulta.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/view/JDlgProduto.java</file>
         </group>
     </open-files>
 </project-private>

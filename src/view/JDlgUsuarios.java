@@ -4,7 +4,9 @@
  */
 package view;
 
+import bean.UsuarioRsj;
 import viewPesquisa.JDlgUsuariosPesquisa;
+import dao.UsuariosDAO;
 
 /**
  *
@@ -12,8 +14,11 @@ import viewPesquisa.JDlgUsuariosPesquisa;
  */
 public class JDlgUsuarios extends javax.swing.JDialog {
 
+    UsuariosDAO usuariosDAO;
+
     /**
      * Creates new form JDlgUsuarios
+     *
      * @param parent
      * @param modal
      */
@@ -22,7 +27,36 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         initComponents();
         setTitle("Usuarios");
         setLocationRelativeTo(null);
-        tools.Util.habilitar(false,jBtnExlcuir, jBtnCancelar,jBtnAlterar,jTxtNome, jTxtApelido,jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha,jBtnConfirmar);
+        usuariosDAO = new UsuariosDAO();
+        tools.Util.habilitar(false, jBtnExlcuir, jBtnCancelar, jBtnAlterar, jTxtNome, jTxtApelido, jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha, jBtnConfirmar);
+    }
+
+    public void beanView(UsuarioRsj usuarioRsj) {
+        jTxtCodigo.setText(tools.Util.intStr(usuarioRsj.getIdusuarioRsj()));
+        jTxtApelido.setText(usuarioRsj.getApelidoRsj());
+        jTxtNome.setText(usuarioRsj.getNomeRsj());
+        jFmtCpf.setText(usuarioRsj.getCpfRsj());
+        jFmtData.setText(tools.Util.dateStr(usuarioRsj.getDatanascimentoRsj()));
+        jPwfSenha.setText(usuarioRsj.getSenhaRsj());
+        jCboNivel.setSelectedIndex(usuarioRsj.getNivelRsj());
+        if (usuarioRsj.getAtivoRsj().equals("Sim")) {
+       jChbAtivo.setSelected(true);
+       }else{jChbAtivo.setSelected(false);
+       }
+
+    }
+
+    public UsuarioRsj viewBean() {
+        UsuarioRsj usuarioRsj = new UsuarioRsj();  
+        usuarioRsj.setIdusuarioRsj(tools.Util.strInt(jTxtCodigo.getText()));
+        usuarioRsj.setApelidoRsj(jTxtApelido.getText());
+        usuarioRsj.setAtivoRsj(jChbAtivo.isSelected() == true ? "Sim" : "Não");
+        usuarioRsj.setCpfRsj(jFmtCpf.getText());
+        usuarioRsj.setDatanascimentoRsj(tools.Util.strDate(jFmtData.getText()));
+        usuarioRsj.setNivelRsj(jCboNivel.getSelectedIndex());
+        usuarioRsj.setNomeRsj(jTxtNome.getText());
+        usuarioRsj.setSenhaRsj(jPwfSenha.getText());
+        return usuarioRsj;
     }
 
     /**
@@ -253,9 +287,9 @@ public class JDlgUsuarios extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-  tools.Util.limp(jTxtNome, jTxtApelido,jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha); 
-        tools.Util.habilitar(false,jBtnConfirmar ,jBtnCancelar,jBtnExlcuir,jTxtNome,jBtnAlterar, jTxtApelido,jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha);
-      tools.Util.habilitar(true, jBtnPesquisar,jBtnIncluir);
+        tools.Util.limp(jTxtNome, jTxtApelido, jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha);
+        tools.Util.habilitar(false, jBtnConfirmar, jBtnCancelar, jBtnExlcuir, jTxtNome, jBtnAlterar, jTxtApelido, jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha);
+        tools.Util.habilitar(true, jBtnPesquisar, jBtnIncluir);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jPwfSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPwfSenhaActionPerformed
@@ -264,16 +298,16 @@ public class JDlgUsuarios extends javax.swing.JDialog {
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
         JDlgUsuariosPesquisa jDlgUsuariosPesquisa = new JDlgUsuariosPesquisa(null, true);
-        jDlgUsuariosPesquisa.setTelaAnterior(this);        
+        jDlgUsuariosPesquisa.setTelaAnterior(this);
         jDlgUsuariosPesquisa.setVisible(true);
-        
-        tools.Util.habilitar(true ,jBtnCancelar,jBtnExlcuir,jBtnAlterar);
-      tools.Util.habilitar(false, jBtnPesquisar,jBtnIncluir,jTxtNome, jTxtApelido,jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha,jBtnConfirmar);
+
+        tools.Util.habilitar(true, jBtnCancelar, jBtnExlcuir, jBtnAlterar);
+        tools.Util.habilitar(false, jBtnPesquisar, jBtnIncluir, jTxtNome, jTxtApelido, jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha, jBtnConfirmar);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
-    tools.Util.habilitar(true,jBtnConfirmar, jBtnCancelar,jTxtNome, jTxtApelido,jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha);
-    tools.Util.habilitar(false, jBtnPesquisar, jBtnIncluir,jBtnAlterar);
+        tools.Util.habilitar(true, jBtnConfirmar, jBtnCancelar, jTxtNome, jTxtApelido, jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha);
+        tools.Util.habilitar(false, jBtnPesquisar, jBtnIncluir, jBtnAlterar);
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jCboNivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboNivelActionPerformed
@@ -281,8 +315,8 @@ public class JDlgUsuarios extends javax.swing.JDialog {
     }//GEN-LAST:event_jCboNivelActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-   tools.Util.habilitar(true,jBtnConfirmar ,jBtnCancelar,jTxtNome, jTxtApelido,jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha);
-      tools.Util.habilitar(false, jBtnPesquisar,jBtnIncluir, jBtnExlcuir,jBtnAlterar);
+        tools.Util.habilitar(true, jBtnConfirmar, jBtnCancelar, jTxtNome, jTxtApelido, jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha);
+        tools.Util.habilitar(false, jBtnPesquisar, jBtnIncluir, jBtnExlcuir, jBtnAlterar);
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jTxtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtCodigoActionPerformed
@@ -290,16 +324,19 @@ public class JDlgUsuarios extends javax.swing.JDialog {
     }//GEN-LAST:event_jTxtCodigoActionPerformed
 
     private void jBtnExlcuirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExlcuirActionPerformed
-  tools.Util.limp(jTxtNome, jTxtApelido,jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha); 
-  tools.Util.habilitar(false,jBtnExlcuir, jBtnCancelar,jBtnAlterar,jTxtNome, jTxtApelido,jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha,jBtnConfirmar);
-  tools.Util.habilitar(true,jBtnPesquisar,jBtnIncluir);
-tools.Util.perguntar(null);
+        tools.Util.limp(jTxtNome, jTxtApelido, jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha);
+        tools.Util.habilitar(false, jBtnExlcuir, jBtnCancelar, jBtnAlterar, jTxtNome, jTxtApelido, jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha, jBtnConfirmar);
+        tools.Util.habilitar(true, jBtnPesquisar, jBtnIncluir);
+        tools.Util.perguntar(null);
     }//GEN-LAST:event_jBtnExlcuirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
-      tools.Util.limp(jTxtNome, jTxtApelido,jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha);  
-         tools.Util.habilitar(false,jBtnConfirmar,jBtnAlterar ,jBtnCancelar,jBtnExlcuir,jTxtNome, jTxtApelido,jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha);
-      tools.Util.habilitar(true, jBtnPesquisar,jBtnIncluir);
+        //     UsuarioRsj usuarioRsj = new viewBean();
+        //   usuariosDAO.insert(usuarioRsj);
+        usuariosDAO.insert(viewBean());
+        tools.Util.limp(jTxtNome, jTxtApelido, jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha);
+        tools.Util.habilitar(false, jBtnConfirmar, jBtnAlterar, jBtnCancelar, jBtnExlcuir, jTxtNome, jTxtApelido, jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha);
+        tools.Util.habilitar(true, jBtnPesquisar, jBtnIncluir);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jTxtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtNomeActionPerformed

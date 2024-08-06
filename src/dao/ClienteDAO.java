@@ -22,7 +22,7 @@ public class ClienteDAO extends DAO_Abstract{
 
     @Override
     public void upedate(Object object) {
-                session.beginTransaction();
+        session.beginTransaction();
         session.flush();
         session.clear();
         session.update(object);
@@ -31,7 +31,7 @@ public class ClienteDAO extends DAO_Abstract{
 
     @Override
     public void delete(Object object) {
-                session.beginTransaction();
+        session.beginTransaction();
         session.flush();
         session.clear();
         session.delete(object);
