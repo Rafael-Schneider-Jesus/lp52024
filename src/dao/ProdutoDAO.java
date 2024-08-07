@@ -5,8 +5,10 @@
  */
 package dao;
 
+import bean.ProdutoRsj;
 import java.util.List;
-
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 /**
  *
  * @author User
@@ -40,12 +42,21 @@ public class ProdutoDAO extends DAO_Abstract{
 
     @Override
     public Object list(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                session.beginTransaction();
+        Criteria criteria = session.createCriteria(ProdutoRsj.class);
+        criteria.add(Restrictions.eq("idprodutoRsj", id));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista.get(0);
     }
 
     @Override
     public List listAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                session.beginTransaction();
+        Criteria criteria = session.createCriteria(ProdutoRsj.class);
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
     }
     
 }
