@@ -4,6 +4,8 @@
  */
 package viewControle;
 
+import bean.UsuarioRsj;
+import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -11,8 +13,15 @@ import javax.swing.table.AbstractTableModel;
  * @author User
  */
 public class UsuariosControle extends AbstractTableModel{
+private List lista;
+public void setList(List lista){
+this.lista = lista;
+}
+public UsuarioRsj getUsuarioRsj(int rowIndex){
+return  (UsuarioRsj) lista.get(rowIndex);
+}
 
-    @Override
+     @Override
     public int getRowCount() {
        return 0;
     }
@@ -24,7 +33,8 @@ public class UsuariosControle extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
- return 0;
+    
+        return "";
     }
     
        public String getColumnName(int column) {

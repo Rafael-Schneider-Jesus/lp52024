@@ -6,7 +6,7 @@ package viewPesquisa;
 
 import view.JDlgUsuarios;
 import viewControle.UsuariosControle;
-
+import dao.UsuariosDAO;
 /**
  *
  * @author User
@@ -14,7 +14,8 @@ import viewControle.UsuariosControle;
 public class JDlgUsuariosPesquisa extends javax.swing.JDialog {
 
         private JDlgUsuarios jDlgUsuarios;
-    
+        private  UsuariosDAO usuariosDAO;
+     UsuariosControle usuariosControle;
     /**
      * Creates new form JDlgUsuariosPesquisa
      */
@@ -23,9 +24,13 @@ public class JDlgUsuariosPesquisa extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Consulta de Usuarios");
-        UsuariosControle usuariosControle = new UsuariosControle();
+         usuariosControle = new UsuariosControle();
+       usuariosDAO = new UsuariosDAO();
+      
         initComponents();
         jTable1.setModel(usuariosControle);  
+        
+         
      
     }
        public void setTelaAnterior(JDlgUsuarios jDlgUsuarios) {
@@ -103,7 +108,14 @@ public class JDlgUsuariosPesquisa extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-        setVisible(false);
+        if (jTable1.getSelectedRow() == - 1){
+            tools.Util.msg("Nenhuma registro selecionado");
+        }else{
+            int sel = jTable1.getSelectedRow();
+          //  jDlgUsuarios.beanView(UsuariosControle.getUsuarioRsj(sel));
+            
+            setVisible(false);
+        }
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
