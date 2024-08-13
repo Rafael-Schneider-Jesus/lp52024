@@ -5,6 +5,7 @@
 package viewControle;
 
 import bean.VendaprodutoRsj;
+import bean.VendedorRsj;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -18,8 +19,8 @@ public class VendedorControle extends AbstractTableModel{
         this.lista = lista;
         this.fireTableDataChanged();
     }
-public VendaprodutoRsj getVendaprodutoRsj(int rowIndex){
-return  (VendaprodutoRsj) lista.get(rowIndex);
+public VendedorRsj getVendedorRsj(int rowIndex){
+return  (VendedorRsj) lista.get(rowIndex);
 }
 
     @Override

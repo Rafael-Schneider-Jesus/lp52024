@@ -18,6 +18,7 @@ public class JDlgVendedorPesquisa extends javax.swing.JDialog {
      private JDlgVendedor jDlgVendedor;
      VendedorDAO vendedorDAO;
      VendedorRsj vendedorRsj;
+     VendedorControle vendedorControle;
     /**
      * Creates new form JDlgVendedorPesquisa
      */
@@ -26,12 +27,12 @@ public class JDlgVendedorPesquisa extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Consulta de Vendedor");
-        VendedorControle vendedorControle = new VendedorControle();
+         vendedorControle = new VendedorControle();
         jTable1.setModel(vendedorControle); 
         
         
-        
-        
+        vendedorControle = new VendedorControle();
+        vendedorRsj = new VendedorRsj();
         vendedorDAO = new VendedorDAO();
           List lista = vendedorDAO.listAll();
         vendedorControle.setList(lista);
@@ -122,8 +123,8 @@ public class JDlgVendedorPesquisa extends javax.swing.JDialog {
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
             int rowSel = jTable1.getSelectedRow();
-      //  vendedorRsj vendedor = VendedorControle.getVendaprodutoRsj(rowSel);
-       // jDlgVendedor.beanView(vendedor);
+       VendedorRsj vendedor = vendedorControle.getVendedorRsj(rowSel);
+       jDlgVendedor.beanView(vendedor);
         setVisible(false);
     }//GEN-LAST:event_jBtnOkActionPerformed
 

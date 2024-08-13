@@ -26,14 +26,18 @@ public class JDlgUsuariosPesquisa extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Consulta de Usuarios");
+        
+        
+        
+        
        usuariosControle = new UsuariosControle();
        usuariosDAO = new UsuariosDAO();
-          List lista = usuariosDAO.listAll();
+       List lista = usuariosDAO.listAll();
         usuariosControle.setList(lista);
         jTable1.setModel(usuariosControle);      
       
         initComponents();
-        jTable1.setModel(usuariosControle);  
+      
         
          
      

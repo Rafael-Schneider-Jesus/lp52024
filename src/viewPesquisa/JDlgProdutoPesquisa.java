@@ -4,6 +4,7 @@
  */
 package viewPesquisa;
 
+import bean.ProdutoRsj;
 import bean.UsuarioRsj;
 import dao.ProdutoDAO;
 import java.util.List;
@@ -117,8 +118,8 @@ public class JDlgProdutoPesquisa extends javax.swing.JDialog {
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
             int rowSel = jTable1.getSelectedRow();
-       // produtoRsj produto = produtoControle.getProdutoRsj(rowSel);
-       // jDlgProduto.beanView(produto);
+        ProdutoRsj produto = produtoControle.getProdutoRsj(rowSel);
+        jDlgProduto.beanView(produto);
         setVisible(false);
     }//GEN-LAST:event_jBtnOkActionPerformed
 

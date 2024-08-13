@@ -5,9 +5,9 @@
 package viewPesquisa;
 
 import bean.ClienteRsj;
-import bean.UsuarioRsj;
+
 import dao.ClienteDAO;
-import dao.UsuariosDAO;
+
 import java.util.List;
 import view.JDlgcliente;
 import viewControle.ClienteControle;
@@ -20,6 +20,7 @@ public class JDlgClientePesquisa extends javax.swing.JDialog {
     private JDlgcliente jDlgcliente;  
      ClienteDAO clienteDAO;
      ClienteControle clienteControle;
+     ClienteRsj clienteRsj;
     /**
      * Creates new form JDlgClientePesquisa
      */
@@ -33,7 +34,7 @@ public class JDlgClientePesquisa extends javax.swing.JDialog {
       
         jTable1.setModel(clienteControle);
         
-        
+        clienteRsj = new ClienteRsj();
        clienteControle = new ClienteControle();
        clienteDAO = new ClienteDAO();
         List lista = clienteDAO.listAll();
@@ -41,7 +42,7 @@ public class JDlgClientePesquisa extends javax.swing.JDialog {
         jTable1.setModel(clienteControle);      
       
         initComponents();
-        jTable1.setModel(clienteControle);  
+       
         
     }
     
@@ -121,8 +122,8 @@ public class JDlgClientePesquisa extends javax.swing.JDialog {
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
          int rowSel = jTable1.getSelectedRow();
-      //  ClienteRsj ClienteRsj = ClienteControle.getClienteRsj(rowSel);
-      //  jDlgcliente.beanView(ClienteRsj);
+       ClienteRsj cliente = clienteControle.getClienteRsj(rowSel);
+        jDlgcliente.beanView(cliente);
         setVisible(false);
     }//GEN-LAST:event_jBtnOkActionPerformed
 

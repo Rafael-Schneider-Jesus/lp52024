@@ -48,34 +48,45 @@ public class Util {
        
         return false;
     }
-    public static int strInt(String cad) {
-        return 0;
+       public static int strInt(String cad) {
+        try {
+            return Integer.parseInt(cad);
+        } catch (NumberFormatException e) {
+            msg("Erro: '" + cad + "' não é um número válido.");
+            return 0; // Retorna 0 ou outro valor padrão em caso de erro
+        }
     }
-     public static String intStr(int num) {
-        return "" ;
+
+    public static String intStr(int num) {
+        return String.valueOf(num);
     }
-     public static double strDouble(String cad) {
-        return 0;
+
+    public static double strDouble(String cad) {
+        try {
+            return Double.parseDouble(cad);
+        } catch (NumberFormatException e) {
+            msg("Erro: '" + cad + "' não é um número válido.");
+            return 0.0; // Retorna 0.0 ou outro valor padrão em caso de erro
+        }
     }
-      public static String doubleStr(String num) {
-        return "";
+
+    public static String doubleStr(double num) {
+        return String.valueOf(num);
     }
+
     public static java.util.Date strDate(String car) {
-            try {
-                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-                return formato.parse(car);
-            } catch (ParseException ex) {
-                System.out.println("Houve uma falha em sua conversão de data");
-            }
+        try {
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+            return formato.parse(car);
+        } catch (ParseException ex) {
+            msg("Erro: Falha na conversão de data.");
             return null;
+        }
     }
 
     public static String dateStr(java.util.Date cad) {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         return formato.format(cad);
     }
-
-    public static void habilitar(JTextField jtxtsabor, JTextField jtxtCodigo, JComboBox<String> jCbocopo, JComboBox<String> jCbotamanho, boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }

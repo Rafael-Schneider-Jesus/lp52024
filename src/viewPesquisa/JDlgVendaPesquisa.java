@@ -19,6 +19,7 @@ public class JDlgVendaPesquisa extends javax.swing.JDialog {
     private JDlgVenda jDlgVenda;
     VendaRsj vendaRsj;
     VendaDAO vendaDAO;
+    VendaControle vendaControle;
     
     /**
      * Creates new form JDlgVendaPesquisa
@@ -29,7 +30,7 @@ public class JDlgVendaPesquisa extends javax.swing.JDialog {
         
         setLocationRelativeTo(null);
         setTitle("Consulta de Venda");
-        VendaControle vendaControle = new VendaControle();
+       vendaControle = new VendaControle();
         jTable1.setModel(vendaControle); 
         vendaDAO = new VendaDAO();
         
@@ -127,8 +128,8 @@ public class JDlgVendaPesquisa extends javax.swing.JDialog {
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
            int rowSel = jTable1.getSelectedRow();
-   //     vendaRsj venda = VendaControle.getVendaRsj(rowSel);
-    //    JDlgVenda.beanView(venda);
+     //   VendaRsj venda = vendaControle.getVendaRsj(rowSel); 
+     //  jDlgVenda.bean(venda);
         setVisible(false);
     }//GEN-LAST:event_jBtnOkActionPerformed
 
