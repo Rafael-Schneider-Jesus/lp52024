@@ -4,6 +4,8 @@
  */
 package viewControle;
 
+import bean.VendaprodutoRsj;
+import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -11,10 +13,18 @@ import javax.swing.table.AbstractTableModel;
  * @author User
  */
 public class VendedorControle extends AbstractTableModel{
+   private List lista;
+    public void setList(List lista) {
+        this.lista = lista;
+        this.fireTableDataChanged();
+    }
+public VendaprodutoRsj getVendaprodutoRsj(int rowIndex){
+return  (VendaprodutoRsj) lista.get(rowIndex);
+}
 
     @Override
     public int getRowCount() {
-        return 0;
+          return lista.size();
     }
 
     @Override
@@ -24,20 +34,33 @@ public class VendedorControle extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        return 0;
+      VendaprodutoRsj vendaprodutoRsj = (VendaprodutoRsj) lista.get(rowIndex);
+        if (columnIndex == 0) {
+           return vendaprodutoRsj.getIdvendaprodutoRsj();
+        } 
+        if (columnIndex == 1) {
+           return vendaprodutoRsj.getProdutoRsj();
+        } 
+        if (columnIndex == 2) {
+           return vendaprodutoRsj.getQuantidadeRsj();
+        } 
+        if (columnIndex == 3) {
+           return vendaprodutoRsj.getValorunitarioRsj();
+        } 
+        return null;
     }
            public String getColumnName(int column) {
         if (column == 0) {
             return "Id";
         }
         if (column == 1) {
-            return "Nome";
+            return "Produto";
         }
         if (column == 2) {
-            return "Apelido";
+            return "Quantidade";
         }
         if (column == 3) {
-            return "Cpf";
+            return "Valorunitario";
         }
         return "";
     }

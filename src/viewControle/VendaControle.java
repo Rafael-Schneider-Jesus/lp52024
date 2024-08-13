@@ -4,6 +4,8 @@
  */
 package viewControle;
 
+import bean.VendaRsj;
+import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -11,10 +13,18 @@ import javax.swing.table.AbstractTableModel;
  * @author User
  */
 public class VendaControle extends AbstractTableModel{
+    private List lista;
+    public void setList(List lista) {
+        this.lista = lista;
+        this.fireTableDataChanged();
+    }
+public VendaRsj getVendaRsj(int rowIndex){
+return  (VendaRsj) lista.get(rowIndex);
+}
 
     @Override
     public int getRowCount() {
-         return 0;
+          return lista.size();
     }
 
     @Override
@@ -24,23 +34,36 @@ public class VendaControle extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        return 0;
+      VendaRsj vendaRsj = (VendaRsj) lista.get(rowIndex);
+        if (columnIndex == 0) {
+           return vendaRsj.getIdvendaRsj();
+        } 
+        if (columnIndex == 1) {
+           return vendaRsj.getFormapagamentoRsj();
+        } 
+        if (columnIndex == 2) {
+           return vendaRsj.getTotalRsj();
+        } 
+        if (columnIndex == 3) {
+           return vendaRsj.getDatavendaRsj();
+        } 
+        return null;
     }
            public String getColumnName(int column) {
         if (column == 0) {
             return "Id";
         }
         if (column == 1) {
-            return "Cliente";
+            return "formapagamento";
         }
         if (column == 2) {
             return "Vendedor";
         }
         if (column == 3) {
-            return "Data";
+            return "Total";
         }
         if (column == 4) {
-            return "Total";
+            return "Datavenda";
         }
         return "";
     }

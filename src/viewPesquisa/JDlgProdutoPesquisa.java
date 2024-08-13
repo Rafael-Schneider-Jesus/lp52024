@@ -4,6 +4,10 @@
  */
 package viewPesquisa;
 
+import bean.UsuarioRsj;
+import dao.ProdutoDAO;
+import java.util.List;
+
 import view.JDlgProduto;
 import viewControle.ProdutoControle;
 
@@ -13,18 +17,30 @@ import viewControle.ProdutoControle;
  */
 public class JDlgProdutoPesquisa extends javax.swing.JDialog {
     private JDlgProduto jDlgProduto;
+     ProdutoControle produtoControle;
+     ProdutoDAO produtoDAO;
     /**
      * Creates new form JDlgProdutoPesquisa
      */
     public JDlgProdutoPesquisa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
-        
         setLocationRelativeTo(null);
         setTitle("Consulta de Produto");
-        ProdutoControle produtoControle = new ProdutoControle();
+        produtoControle = new ProdutoControle();
         jTable1.setModel(produtoControle); 
+        
+        
+        produtoDAO = new ProdutoDAO();
+          List lista = produtoDAO.listAll();
+       produtoControle.setList(lista);
+        jTable1.setModel(produtoControle);      
+      
+        initComponents();
+        jTable1.setModel(produtoControle);  
+        
+        
+        
     }
        public void setTelaAnterior(JDlgProduto jDlgProduto) {
         this.jDlgProduto = jDlgProduto;
@@ -100,7 +116,10 @@ public class JDlgProdutoPesquisa extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-       setVisible(false);
+            int rowSel = jTable1.getSelectedRow();
+       // produtoRsj produto = produtoControle.getProdutoRsj(rowSel);
+       // jDlgProduto.beanView(produto);
+        setVisible(false);
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed

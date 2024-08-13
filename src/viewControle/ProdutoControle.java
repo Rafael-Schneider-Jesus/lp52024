@@ -4,6 +4,8 @@
  */
 package viewControle;
 
+import bean.ProdutoRsj;
+import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -11,10 +13,18 @@ import javax.swing.table.AbstractTableModel;
  * @author User
  */
 public class ProdutoControle extends AbstractTableModel{
+   private List lista;
+    public void setList(List lista) {
+        this.lista = lista;
+        this.fireTableDataChanged();
+    }
+public ProdutoRsj getProdutoRsj(int rowIndex){
+return  (ProdutoRsj) lista.get(rowIndex);
+}
 
     @Override
     public int getRowCount() {
-        return 0;
+             return lista.size();
     }
 
     @Override
@@ -24,7 +34,20 @@ public class ProdutoControle extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        return 0;
+           ProdutoRsj produtoRsj = (ProdutoRsj) lista.get(rowIndex);
+        if (columnIndex == 0) {
+           return produtoRsj.getIdprodutoRsj();
+        } 
+        if (columnIndex == 1) {
+           return produtoRsj.getSaborRsj();
+        } 
+        if (columnIndex == 2) {
+           return produtoRsj.getCopooucasquinhaRsj();
+        } 
+        if (columnIndex == 3) {
+           return produtoRsj.getTamanhoRsj();
+        } 
+        return null;
     }
            public String getColumnName(int column) {
         if (column == 0) {

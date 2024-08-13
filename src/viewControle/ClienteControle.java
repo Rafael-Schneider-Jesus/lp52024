@@ -4,6 +4,8 @@
  */
 package viewControle;
 
+import bean.ClienteRsj;
+import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -11,10 +13,18 @@ import javax.swing.table.AbstractTableModel;
  * @author User
  */
 public class ClienteControle extends AbstractTableModel{
+   private List lista;  
+    public void setList(List lista) {
+        this.lista = lista;
+        this.fireTableDataChanged();
+    }
+public ClienteRsj getClienteRsj(int rowIndex){
+return  (ClienteRsj) lista.get(rowIndex);
+}
 
     @Override
     public int getRowCount() {
-     return 0;
+      return lista.size();
     }
 
     @Override
@@ -24,7 +34,20 @@ public class ClienteControle extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-         return 0;
+          ClienteRsj clienteRsj = (ClienteRsj) lista.get(rowIndex);
+        if (columnIndex == 0) {
+           return clienteRsj.getIdclienteRsj();
+        } 
+        if (columnIndex == 1) {
+           return clienteRsj.getNomeRsj();
+        } 
+        if (columnIndex == 2) {
+           return clienteRsj.getSobrenomeRsj();
+        } 
+        if (columnIndex == 3) {
+           return clienteRsj.getEmailRsj();
+        } 
+        return null;
     }
            public String getColumnName(int column) {
         if (column == 0) {
@@ -34,7 +57,7 @@ public class ClienteControle extends AbstractTableModel{
             return "Nome";
         }
         if (column == 2) {
-            return "Apelido";
+            return "Sobrenome";
         }
         if (column == 3) {
             return "Email";

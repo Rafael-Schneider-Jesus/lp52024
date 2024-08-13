@@ -4,8 +4,11 @@
  */
 package viewPesquisa;
 
+import bean.VendedorRsj;
 import view.JDlgVendedor;
 import viewControle.VendedorControle;
+import dao.VendedorDAO;
+import java.util.List;
 
 /**
  *
@@ -13,6 +16,8 @@ import viewControle.VendedorControle;
  */
 public class JDlgVendedorPesquisa extends javax.swing.JDialog {
      private JDlgVendedor jDlgVendedor;
+     VendedorDAO vendedorDAO;
+     VendedorRsj vendedorRsj;
     /**
      * Creates new form JDlgVendedorPesquisa
      */
@@ -23,6 +28,18 @@ public class JDlgVendedorPesquisa extends javax.swing.JDialog {
         setTitle("Consulta de Vendedor");
         VendedorControle vendedorControle = new VendedorControle();
         jTable1.setModel(vendedorControle); 
+        
+        
+        
+        
+        vendedorDAO = new VendedorDAO();
+          List lista = vendedorDAO.listAll();
+        vendedorControle.setList(lista);
+        jTable1.setModel(vendedorControle);      
+      
+        initComponents();
+        jTable1.setModel(vendedorControle);  
+        
     }
     
            public void setTelaAnterior(JDlgVendedor jDlgVendedor) {
@@ -104,7 +121,10 @@ public class JDlgVendedorPesquisa extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-       setVisible(false);
+            int rowSel = jTable1.getSelectedRow();
+      //  vendedorRsj vendedor = VendedorControle.getVendaprodutoRsj(rowSel);
+       // jDlgVendedor.beanView(vendedor);
+        setVisible(false);
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     /**

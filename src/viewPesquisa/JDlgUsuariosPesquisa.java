@@ -4,9 +4,11 @@
  */
 package viewPesquisa;
 
+import bean.UsuarioRsj;
 import view.JDlgUsuarios;
 import viewControle.UsuariosControle;
 import dao.UsuariosDAO;
+import java.util.List;
 /**
  *
  * @author User
@@ -24,8 +26,11 @@ public class JDlgUsuariosPesquisa extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Consulta de Usuarios");
-         usuariosControle = new UsuariosControle();
+       usuariosControle = new UsuariosControle();
        usuariosDAO = new UsuariosDAO();
+          List lista = usuariosDAO.listAll();
+        usuariosControle.setList(lista);
+        jTable1.setModel(usuariosControle);      
       
         initComponents();
         jTable1.setModel(usuariosControle);  
@@ -108,14 +113,10 @@ public class JDlgUsuariosPesquisa extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-        if (jTable1.getSelectedRow() == - 1){
-            tools.Util.msg("Nenhuma registro selecionado");
-        }else{
-            int sel = jTable1.getSelectedRow();
-          //  jDlgUsuarios.beanView(UsuariosControle.getUsuarioRsj(sel));
-            
-            setVisible(false);
-        }
+        int rowSel = jTable1.getSelectedRow();
+        UsuarioRsj usuarios = usuariosControle.getUsuarioRsj(rowSel);
+        jDlgUsuarios.beanView(usuarios);
+        setVisible(false);
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed

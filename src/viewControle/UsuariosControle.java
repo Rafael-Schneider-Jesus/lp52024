@@ -14,16 +14,17 @@ import javax.swing.table.AbstractTableModel;
  */
 public class UsuariosControle extends AbstractTableModel{
 private List lista;
-public void setList(List lista){
-this.lista = lista;
-}
+   public void setList(List lista) {
+        this.lista = lista;
+        this.fireTableDataChanged();
+    }
 public UsuarioRsj getUsuarioRsj(int rowIndex){
 return  (UsuarioRsj) lista.get(rowIndex);
 }
 
      @Override
     public int getRowCount() {
-       return 0;
+        return lista.size();
     }
 
     @Override
@@ -33,8 +34,20 @@ return  (UsuarioRsj) lista.get(rowIndex);
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-    
-        return "";
+     UsuarioRsj usuarioRsj = (UsuarioRsj) lista.get(rowIndex);
+        if (columnIndex == 0) {
+           return usuarioRsj.getIdusuarioRsj();
+        } 
+        if (columnIndex == 1) {
+           return usuarioRsj.getNomeRsj();
+        } 
+        if (columnIndex == 2) {
+           return usuarioRsj.getApelidoRsj();
+        } 
+        if (columnIndex == 3) {
+           return usuarioRsj.getCpfRsj();
+        } 
+        return null;
     }
     
        public String getColumnName(int column) {

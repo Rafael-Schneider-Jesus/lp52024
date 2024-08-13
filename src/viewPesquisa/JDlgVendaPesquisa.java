@@ -4,8 +4,12 @@
  */
 package viewPesquisa;
 
+
 import view.JDlgVenda;
 import viewControle.VendaControle;
+import dao.VendaDAO;
+import java.util.List;
+import bean.VendaRsj;
 
 /**
  *
@@ -13,6 +17,9 @@ import viewControle.VendaControle;
  */
 public class JDlgVendaPesquisa extends javax.swing.JDialog {
     private JDlgVenda jDlgVenda;
+    VendaRsj vendaRsj;
+    VendaDAO vendaDAO;
+    
     /**
      * Creates new form JDlgVendaPesquisa
      */
@@ -24,6 +31,21 @@ public class JDlgVendaPesquisa extends javax.swing.JDialog {
         setTitle("Consulta de Venda");
         VendaControle vendaControle = new VendaControle();
         jTable1.setModel(vendaControle); 
+        vendaDAO = new VendaDAO();
+        
+        
+        
+        
+        
+          List lista = vendaDAO.listAll();
+        vendaControle.setList(lista);
+        jTable1.setModel(vendaControle);      
+      
+        initComponents();
+      
+        
+        
+        
     }
 
            public void setTelaAnterior(JDlgVenda jDlgVenda) {
@@ -104,7 +126,10 @@ public class JDlgVendaPesquisa extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-       setVisible(false);
+           int rowSel = jTable1.getSelectedRow();
+   //     vendaRsj venda = VendaControle.getVendaRsj(rowSel);
+    //    JDlgVenda.beanView(venda);
+        setVisible(false);
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     /**

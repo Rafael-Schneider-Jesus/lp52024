@@ -4,6 +4,8 @@
  */
 package viewControle;
 
+import bean.UsuarioRsj;
+import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -11,10 +13,18 @@ import javax.swing.table.AbstractTableModel;
  * @author User
  */
 public class PedidoControle extends AbstractTableModel{
+   private List lista;
+    public void setList(List lista) {
+        this.lista = lista;
+        this.fireTableDataChanged();
+    }
+public UsuarioRsj getUsuarioRsj(int rowIndex){
+return  (UsuarioRsj) lista.get(rowIndex);
+}
 
     @Override
     public int getRowCount() {
-        return 0;
+        return lista.size();
     }
 
     @Override
