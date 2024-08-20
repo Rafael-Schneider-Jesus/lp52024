@@ -49,12 +49,9 @@ public class Util {
         return false;
     }
        public static int strInt(String cad) {
-        try {
-            return Integer.parseInt(cad);
-        } catch (NumberFormatException e) {
-            msg("Erro: '" + cad + "' não é um número válido.");
-            return 0; // Retorna 0 ou outro valor padrão em caso de erro
-        }
+ 
+            return Integer.valueOf(cad);
+      
     }
 
     public static String intStr(int num) {
@@ -62,12 +59,9 @@ public class Util {
     }
 
     public static double strDouble(String cad) {
-        try {
+       
             return Double.parseDouble(cad);
-        } catch (NumberFormatException e) {
-            msg("Erro: '" + cad + "' não é um número válido.");
-            return 0.0; // Retorna 0.0 ou outro valor padrão em caso de erro
-        }
+       
     }
 
     public static String doubleStr(double num) {

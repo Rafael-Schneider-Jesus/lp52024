@@ -5,7 +5,7 @@
 package viewPesquisa;
 
 
-import view.JDlgVenda;
+import viewVendaPro.JDlgVenda;
 import viewControle.VendaControle;
 import dao.VendaDAO;
 import java.util.List;

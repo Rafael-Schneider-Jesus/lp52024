@@ -59,5 +59,15 @@ public class UsuariosDAO extends DAO_Abstract {
         session.getTransaction().commit();
         return lista;
     }
+     public List busca(String tab, String var){
+        session.beginTransaction();
+       Criteria criteria = session.createCriteria(UsuarioRsj.class);
+        criteria.add(Restrictions.eq(tab, var ));
+          List lista = criteria.list();
+       
+        session.getTransaction().commit();
+    return  lista;
+     }
+
 
 }

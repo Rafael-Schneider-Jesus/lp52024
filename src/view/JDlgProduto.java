@@ -15,6 +15,7 @@ import viewPesquisa.JDlgUsuariosPesquisa;
  */
 public class JDlgProduto extends javax.swing.JDialog {
  ProdutoDAO produtoDAO;
+ boolean incluindo;
     /**
      * Creates new form JDlgProduto
      */
@@ -265,6 +266,7 @@ public class JDlgProduto extends javax.swing.JDialog {
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
    tools.Util.habilitar(true,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jBtnComfirmar,jCboEntrega);
    tools.Util.habilitar(false,jBtnpesquisar, jBtnIncluir, jBtnAlterar, jbtnExcluir);
+   incluindo = false;
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnpesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnpesquisarActionPerformed
@@ -278,7 +280,16 @@ public class JDlgProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnpesquisarActionPerformed
 
     private void jBtnComfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnComfirmarActionPerformed
-      produtoDAO.insert(viewBean());
+        if (incluindo == true) {
+            
+        produtoDAO.insert(viewBean());
+        }else{
+        
+        produtoDAO.upedate(viewBean());
+        }
+       
+ 
+      
         tools.Util.limp(jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jCboEntrega);
       tools.Util.habilitar(false,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jBtnComfirmar,jBtnCancelar,jbtnExcluir,jCboEntrega);
       tools.Util.habilitar(true, jBtnpesquisar,jBtnIncluir);
@@ -293,6 +304,7 @@ public class JDlgProduto extends javax.swing.JDialog {
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
     tools.Util.habilitar(true,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jBtnComfirmar, jBtnCancelar,jCboEntrega);
     tools.Util.habilitar(false, jBtnpesquisar, jBtnIncluir);
+    incluindo = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jCbocopoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbocopoActionPerformed

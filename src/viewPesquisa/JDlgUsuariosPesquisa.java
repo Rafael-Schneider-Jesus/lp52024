@@ -9,6 +9,7 @@ import view.JDlgUsuarios;
 import viewControle.UsuariosControle;
 import dao.UsuariosDAO;
 import java.util.List;
+import javax.swing.JOptionPane;
 /**
  *
  * @author User
@@ -32,6 +33,7 @@ public class JDlgUsuariosPesquisa extends javax.swing.JDialog {
         
        usuariosControle = new UsuariosControle();
        usuariosDAO = new UsuariosDAO();
+       
        List lista = usuariosDAO.listAll();
         usuariosControle.setList(lista);
         jTable1.setModel(usuariosControle);      
@@ -117,10 +119,15 @@ public class JDlgUsuariosPesquisa extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-        int rowSel = jTable1.getSelectedRow();
-        UsuarioRsj usuarios = usuariosControle.getUsuarioRsj(rowSel);
-        jDlgUsuarios.beanView(usuarios);
-        setVisible(false);
+int rowSel = jTable1.getSelectedRow();
+        if (rowSel >= 0) {
+            UsuarioRsj usuario = usuariosControle.getUsuarioRsj(rowSel);
+            jDlgUsuarios.beanView(usuario);
+            setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione um usuário na tabela.", "Aviso", JOptionPane.WARNING_MESSAGE);
+        }
+    
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed

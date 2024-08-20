@@ -38,10 +38,10 @@ ClienteDAO clienteDAO;
         jTxtnumero.setText(tools.Util.intStr(clienteRsj.getNumerodependentesRsj()));
         jTxtRenda.setText(tools.Util.intStr(clienteRsj.getRendaanualRsj()));
         jTxtendereco.setText(clienteRsj.getEnderecoRsj());
-        jFmtnasc.setText(tools.Util.dateStr(clienteRsj.getDatanascimentoRsj()));
-        jFmtCadastro.setText(tools.Util.dateStr(clienteRsj.getDatacadastroRsj()));
+       // jFmtnasc.setText(tools.Util.dateStr(clienteRsj.getDatanascimentoRsj()));
+      //  jFmtCadastro.setText(tools.Util.dateStr(clienteRsj.getDatacadastroRsj()));
         jCboEstado.setSelectedIndex(clienteRsj.getEstadocivilRsj());
-        jCboGenero.setSelectedIndex(clienteRsj.getGeneroRsj());
+       jCboGenero.setSelectedIndex(clienteRsj.getGeneroRsj());
     }
     public ClienteRsj viewBean() {
         ClienteRsj clienteRsj = new ClienteRsj(); // criou o bean
@@ -57,10 +57,10 @@ ClienteDAO clienteDAO;
         clienteRsj.setNumerodependentesRsj(tools.Util.strInt(jTxtnumero.getText()));
         clienteRsj.setRendaanualRsj(tools.Util.strInt(jTxtRenda.getText()));
         clienteRsj.setEnderecoRsj(jTxtendereco.getText());
-       clienteRsj.setDatacadastroRsj(tools.Util.strDate(jFmtCadastro.getText()));
-       clienteRsj.setDatanascimentoRsj(tools.Util.strDate(jFmtnasc.getText()));
+    //   clienteRsj.setDatacadastroRsj(tools.Util.strDate(jFmtCadastro.getText()));
+   //   clienteRsj.setDatanascimentoRsj(tools.Util.strDate(jFmtnasc.getText()));
        clienteRsj.setEstadocivilRsj(jCboEstado.getSelectedIndex());
-       clienteRsj.setGeneroRsj(jCboGenero.getSelectedIndex());
+      clienteRsj.setGeneroRsj(jCboGenero.getSelectedIndex());
         
 
     

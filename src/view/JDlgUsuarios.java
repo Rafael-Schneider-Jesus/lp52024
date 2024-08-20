@@ -14,7 +14,8 @@ import viewControle.UsuariosControle;
  * @author User
  */
 public class JDlgUsuarios extends javax.swing.JDialog {
-   boolean incluindo;
+
+    boolean incluindo;
     UsuariosDAO usuariosDAO;
 
     /**
@@ -23,16 +24,13 @@ public class JDlgUsuarios extends javax.swing.JDialog {
      * @param parent
      * @param modal
      */
-    
     public JDlgUsuarios(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setTitle("Usuarios");
         setLocationRelativeTo(null);
         usuariosDAO = new UsuariosDAO();
-      
-        
-        
+
         tools.Util.habilitar(false, jBtnExlcuir, jBtnCancelar, jBtnAlterar, jTxtNome, jTxtApelido, jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha, jBtnConfirmar);
     }
 
@@ -41,23 +39,23 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         jTxtApelido.setText(usuarioRsj.getApelidoRsj());
         jTxtNome.setText(usuarioRsj.getNomeRsj());
         jFmtCpf.setText(usuarioRsj.getCpfRsj());
-        jFmtData.setText(tools.Util.dateStr(usuarioRsj.getDatanascimentoRsj()));
+        //  jFmtData.setText(tools.Util.dateStr(usuarioRsj.getDatanascimentoRsj()));
         jPwfSenha.setText(usuarioRsj.getSenhaRsj());
-        jCboNivel.setSelectedIndex(usuarioRsj.getNivelRsj());
-        if (usuarioRsj.getAtivoRsj().equals("Sim")) {
-       jChbAtivo.setSelected(true);
-       }else{jChbAtivo.setSelected(false);
-       }
+         jCboNivel.setSelectedIndex(usuarioRsj.getNivelRsj());
+//        if (usuarioRsj.getAtivoRsj().equals("Sim")) {
+//       jChbAtivo.setSelected(true);
+//       }else{jChbAtivo.setSelected(false);
+//       }
 
     }
 
     public UsuarioRsj viewBean() {
-        UsuarioRsj usuarioRsj = new UsuarioRsj();  
+        UsuarioRsj usuarioRsj = new UsuarioRsj();
         usuarioRsj.setIdusuarioRsj(tools.Util.strInt(jTxtCodigo.getText()));
         usuarioRsj.setApelidoRsj(jTxtApelido.getText());
-        usuarioRsj.setAtivoRsj(jChbAtivo.isSelected() == true ? "Sim" : "Não");
+        //   usuarioRsj.setAtivoRsj(jChbAtivo.isSelected() == true ? "Sim" : "Não");
         usuarioRsj.setCpfRsj(jFmtCpf.getText());
-        usuarioRsj.setDatanascimentoRsj(tools.Util.strDate(jFmtData.getText()));
+        // usuarioRsj.setDatanascimentoRsj(tools.Util.strDate(jFmtData.getText()));
         usuarioRsj.setNivelRsj(jCboNivel.getSelectedIndex());
         usuarioRsj.setNomeRsj(jTxtNome.getText());
         usuarioRsj.setSenhaRsj(jPwfSenha.getText());
@@ -334,17 +332,20 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         tools.Util.limp(jTxtNome, jTxtApelido, jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha);
         tools.Util.habilitar(false, jBtnExlcuir, jBtnCancelar, jBtnAlterar, jTxtNome, jTxtApelido, jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha, jBtnConfirmar);
         tools.Util.habilitar(true, jBtnPesquisar, jBtnIncluir);
-        tools.Util.perguntar(null);
+
+        if (tools.Util.perguntar("Deseja Excluir")) {
+            usuariosDAO.delete(viewBean());
+        }
     }//GEN-LAST:event_jBtnExlcuirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         //     UsuarioRsj usuarioRsj = new viewBean();
         //   usuariosDAO.insert(usuarioRsj);
-      
+
         if (incluindo == true) {
-             usuariosDAO.insert(viewBean());
-        }else{
-         usuariosDAO.upedate(viewBean());
+            usuariosDAO.insert(viewBean());
+        } else {
+            usuariosDAO.upedate(viewBean());
         }
         tools.Util.limp(jTxtNome, jTxtApelido, jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha);
         tools.Util.habilitar(false, jBtnConfirmar, jBtnAlterar, jBtnCancelar, jBtnExlcuir, jTxtNome, jTxtApelido, jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha);
