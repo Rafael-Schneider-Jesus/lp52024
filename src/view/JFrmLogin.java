@@ -19,6 +19,9 @@ public class JFrmLogin extends javax.swing.JFrame {
      */
     public JFrmLogin() {
         initComponents();
+       
+         setLocationRelativeTo(null);
+        setTitle("Login");
     }
 
     /**
@@ -127,23 +130,14 @@ public class JFrmLogin extends javax.swing.JFrame {
 
     private void jBtnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEntrarActionPerformed
 UsuariosDAO usuariosDAO = new UsuariosDAO();
-         
-                      
-
-     
-    
-       
+              
         if(tentativa<3){ 
-        if ( usuariosDAO.busca("apelidoMr", JTxtUsuario.getText()).size() !=0 && usuariosDAO.busca("senhaMr", jPwfSenha.getText()).size()!=0) { 
+        if ( usuariosDAO.busca("apelidoRsj", JTxtUsuario.getText()).size() !=0 && usuariosDAO.busca("senhaRsj", jPwfSenha.getText()).size()!=0) { 
             JFrmPrincipal jFrmPrincipal = new JFrmPrincipal();
             jFrmPrincipal.setVisible(true) ;
         
        
-        this.dispose();
-            
-             
-             
-                    
+        this.dispose();        
         }else{ 
            
           JOptionPane.showMessageDialog(null, "Senha ou Usuario incorretas");

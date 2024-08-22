@@ -107,12 +107,12 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="JBtnCancelar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Canselar"/>
+            <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="jBtnOk">
           <Properties>
             <Property name="text" type="java.lang.String" value="OK"/>
           </Properties>

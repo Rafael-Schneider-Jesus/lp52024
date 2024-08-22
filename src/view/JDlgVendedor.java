@@ -14,6 +14,7 @@ import viewPesquisa.JDlgVendedorPesquisa;
 public class JDlgVendedor extends javax.swing.JDialog {
    VendedorRsj vendedorRsj;
    VendedorDAO vendedorDAO;
+   boolean incluindo;
     /**
      * Creates new form JDlgVendedor
      */
@@ -152,7 +153,7 @@ public class JDlgVendedor extends javax.swing.JDialog {
 
         jLabel3.setText("Sobrenome");
 
-        jcboFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcboFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vendedor", "gerente", "estagiario" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -276,6 +277,7 @@ public class JDlgVendedor extends javax.swing.JDialog {
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
      tools.Util.habilitar(true,jTelefone, jTxtCodigo, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao, jBtnComfirmar);
    tools.Util.habilitar(false,jBtnpesquisar, jBtnIncluir, jBtnAlterar, jbtnExcluir);
+   incluindo = false;
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnpesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnpesquisarActionPerformed
@@ -289,7 +291,18 @@ public class JDlgVendedor extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnpesquisarActionPerformed
 
     private void jBtnComfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnComfirmarActionPerformed
-  vendedorDAO.insert(viewBean());
+            
+            if (incluindo == true) {
+            vendedorDAO.insert(viewBean());
+        } else {
+            vendedorDAO.upedate(viewBean());
+        }
+        
+       
+        
+        
+        
+        
         tools.Util.limp(jTelefone, jTxtCodigo, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao); 
       tools.Util.habilitar(false,jTelefone, jTxtCodigo, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao, jBtnComfirmar,jBtnCancelar,jbtnExcluir);
       tools.Util.habilitar(true, jBtnpesquisar,jBtnIncluir);
@@ -304,6 +317,7 @@ public class JDlgVendedor extends javax.swing.JDialog {
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         tools.Util.habilitar(true,jTelefone, jTxtCodigo, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao, jBtnComfirmar, jBtnCancelar);
     tools.Util.habilitar(false, jBtnpesquisar, jBtnIncluir);
+    incluindo = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     /**

@@ -26,7 +26,7 @@ public class UsuarioRsj  implements java.io.Serializable {
      private String cpfRsj;
      private Date datanascimentoRsj;
      private String senhaRsj;
-     private int nivelRsj;
+    // private int nivelRsj;
      private String ativoRsj;
 
     public UsuarioRsj() {
@@ -43,7 +43,7 @@ public class UsuarioRsj  implements java.io.Serializable {
        this.cpfRsj = cpfRsj;
        this.datanascimentoRsj = datanascimentoRsj;
        this.senhaRsj = senhaRsj;
-       this.nivelRsj = nivelRsj;
+       //this.nivelRsj = nivelRsj;
        this.ativoRsj = ativoRsj;
     }
    
@@ -109,15 +109,15 @@ public class UsuarioRsj  implements java.io.Serializable {
         this.senhaRsj = senhaRsj;
     }
 
-    
-    @Column(name="nivel_rsj")
-    public int getNivelRsj() {
-        return this.nivelRsj;
-    }
-    
-    public void setNivelRsj(int nivelRsj) {
-        this.nivelRsj = nivelRsj;
-    }
+//    @Column(name="nivel_rsj")
+//    public int getNivelRsj() {
+//        return this.nivelRsj;
+//    }
+//    
+//    public void setNivelRsj(int nivelRsj) {
+//        this.nivelRsj = nivelRsj;
+//    }
+//   
 
     
     @Column(name="ativo_rsj", length=1)
@@ -128,10 +128,7 @@ public class UsuarioRsj  implements java.io.Serializable {
     public void setAtivoRsj(String ativoRsj) {
         this.ativoRsj = ativoRsj;
     }
-
-
-
-
+  
 }
 
 

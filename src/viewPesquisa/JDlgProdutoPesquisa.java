@@ -28,17 +28,16 @@ public class JDlgProdutoPesquisa extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Consulta de Produto");
+
+        
+        
+          produtoDAO = new ProdutoDAO();
         produtoControle = new ProdutoControle();
-        jTable1.setModel(produtoControle); 
-        
-        
-        produtoDAO = new ProdutoDAO();
-          List lista = produtoDAO.listAll();
-       produtoControle.setList(lista);
-        jTable1.setModel(produtoControle);      
+        produtoControle.setList( produtoDAO.listAll() );
+        jTable1.setModel(produtoControle);
+         
       
         initComponents();
-        jTable1.setModel(produtoControle);  
         
         
         
@@ -95,12 +94,16 @@ public class JDlgProdutoPesquisa extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jBtnCancelar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBtnOk)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addComponent(jBtnCancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBtnOk))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -117,10 +120,13 @@ public class JDlgProdutoPesquisa extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-            int rowSel = jTable1.getSelectedRow();
-        ProdutoRsj produto = produtoControle.getProdutoRsj(rowSel);
-        jDlgProduto.beanView(produto);
-        setVisible(false);
+if ( jTable1.getSelectedRow() == -1 ) {
+            tools.Util.msg("Nenhuma registro selecionado.");
+        } else {
+            int sel = jTable1.getSelectedRow();
+            jDlgProduto.beanView(produtoControle.getProdutoRsj(sel) );            
+            setVisible(false);
+        }
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed

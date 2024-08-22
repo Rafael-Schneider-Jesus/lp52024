@@ -41,11 +41,12 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         jFmtCpf.setText(usuarioRsj.getCpfRsj());
         //  jFmtData.setText(tools.Util.dateStr(usuarioRsj.getDatanascimentoRsj()));
         jPwfSenha.setText(usuarioRsj.getSenhaRsj());
-         jCboNivel.setSelectedIndex(usuarioRsj.getNivelRsj());
-//        if (usuarioRsj.getAtivoRsj().equals("Sim")) {
-//       jChbAtivo.setSelected(true);
-//       }else{jChbAtivo.setSelected(false);
-//       }
+//jCboNivel.setSelectedIndex(usuarioRsj.getNivelRsj()); Null value was assigned to a property of primitive type setter of bean.UsuarioRsj.nivelRsj
+        if (usuarioRsj.getAtivoRsj().equals("S")) {
+            jChbAtivo.setSelected(true);
+        } else {
+            jChbAtivo.setSelected(false);
+        }
 
     }
 
@@ -53,12 +54,13 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         UsuarioRsj usuarioRsj = new UsuarioRsj();
         usuarioRsj.setIdusuarioRsj(tools.Util.strInt(jTxtCodigo.getText()));
         usuarioRsj.setApelidoRsj(jTxtApelido.getText());
-        //   usuarioRsj.setAtivoRsj(jChbAtivo.isSelected() == true ? "Sim" : "Não");
+       
         usuarioRsj.setCpfRsj(jFmtCpf.getText());
         // usuarioRsj.setDatanascimentoRsj(tools.Util.strDate(jFmtData.getText()));
-        usuarioRsj.setNivelRsj(jCboNivel.getSelectedIndex());
+      //  usuarioRsj.setNivelRsj(jCboNivel.getSelectedIndex()); Null value was assigned to a property of primitive type setter of bean.UsuarioRsj.nivelRsj
         usuarioRsj.setNomeRsj(jTxtNome.getText());
         usuarioRsj.setSenhaRsj(jPwfSenha.getText());
+        
         return usuarioRsj;
     }
 
@@ -300,7 +302,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
     }//GEN-LAST:event_jPwfSenhaActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
-        JDlgUsuariosPesquisa jDlgUsuariosPesquisa = new JDlgUsuariosPesquisa(null, true);
+     JDlgUsuariosPesquisa jDlgUsuariosPesquisa = new JDlgUsuariosPesquisa(null, true);
         jDlgUsuariosPesquisa.setTelaAnterior(this);
         jDlgUsuariosPesquisa.setVisible(true);
 

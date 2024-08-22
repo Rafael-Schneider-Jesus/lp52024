@@ -19,6 +19,7 @@ public class JDlgVendaPedio extends javax.swing.JDialog {
     public JDlgVendaPedio(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        tools.Util.habilitar(false, jTxtTotal, jTxtvalorunitarioRsj);
     }
 
     /**
@@ -33,8 +34,8 @@ public class JDlgVendaPedio extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        JBtnCancelar = new javax.swing.JButton();
+        jBtnOk = new javax.swing.JButton();
         jTxtvalorunitarioRsj = new javax.swing.JTextField();
         jTxtQuantidadeRsj = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -50,11 +51,11 @@ public class JDlgVendaPedio extends javax.swing.JDialog {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jButton1.setText("Canselar");
-        jPanel2.add(jButton1);
+        JBtnCancelar.setText("Cancelar");
+        jPanel2.add(JBtnCancelar);
 
-        jButton2.setText("OK");
-        jPanel2.add(jButton2);
+        jBtnOk.setText("OK");
+        jPanel2.add(jBtnOk);
 
         jTxtvalorunitarioRsj.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,8 +169,8 @@ public class JDlgVendaPedio extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton JBtnCancelar;
+    private javax.swing.JButton jBtnOk;
     private javax.swing.JComboBox<ProdutoRsj> jCboProdutoRsj;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
