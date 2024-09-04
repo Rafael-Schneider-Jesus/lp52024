@@ -58,5 +58,25 @@ public class ProdutoDAO extends DAO_Abstract{
         session.getTransaction().commit();
         return lista;
     }
+    public List listNome(String sabor){
+        session.beginTransaction();
+       Criteria criteria = session.createCriteria(ProdutoRsj.class);
+        criteria.add(Restrictions.like("saborRsj", "%" + sabor + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+    return lista;
+   
+    
+    } 
+    public List listFuncao(String entrega){
+        session.beginTransaction();
+       Criteria criteria = session.createCriteria(ProdutoRsj.class);
+        criteria.add(Restrictions.like("entregaRsj", "%" + entrega + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+    return lista;
+   
+    
+    } 
     
 }

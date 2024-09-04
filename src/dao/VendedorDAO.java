@@ -60,4 +60,25 @@ public class VendedorDAO extends DAO_Abstract{
         return lista;
     }
     
+    public List listNome(String nome){
+        session.beginTransaction();
+       Criteria criteria = session.createCriteria(VendedorRsj.class);
+        criteria.add(Restrictions.like("nomeRsj", "%" + nome + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+    return lista;
+   
+    
+    } 
+    public List listFuncaoRsj(String funcao){
+        session.beginTransaction();
+       Criteria criteria = session.createCriteria(VendedorRsj.class);
+        criteria.add(Restrictions.like("funcaoRsj", "%" + funcao + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+    return lista;
+   
+    
+    } 
+    
 }

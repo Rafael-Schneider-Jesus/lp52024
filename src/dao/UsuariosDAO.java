@@ -68,6 +68,26 @@ public class UsuariosDAO extends DAO_Abstract {
         session.getTransaction().commit();
     return  lista;
      }
+     public List listNome(String nome){
+        session.beginTransaction();
+       Criteria criteria = session.createCriteria(UsuarioRsj.class);
+        criteria.add(Restrictions.like("nomeRsj", "%" + nome + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+    return lista;
+   
+    
+    } 
+    public List listFuncaoRsj(String cpf){
+        session.beginTransaction();
+       Criteria criteria = session.createCriteria(UsuarioRsj.class);
+        criteria.add(Restrictions.like("cpfRsj", "%" + cpf + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+    return lista;
+   
+    
+    } 
 
 
 }
