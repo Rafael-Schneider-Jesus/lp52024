@@ -19,7 +19,7 @@ public class JDlgVenda extends javax.swing.JDialog {
     public JDlgVenda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-         setTitle("Venda");
+        setTitle("Venda");
         setLocationRelativeTo(null);
     }
 
@@ -299,11 +299,11 @@ public class JDlgVenda extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
- 
+
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
- 
+
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jTxtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtTotalActionPerformed

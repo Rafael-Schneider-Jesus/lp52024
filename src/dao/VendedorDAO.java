@@ -14,7 +14,7 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author User
  */
-public class VendedorDAO extends DAO_Abstract{
+public class VendedorDAO extends DAO_Abstract {
 
     @Override
     public void insert(Object object) {
@@ -43,7 +43,7 @@ public class VendedorDAO extends DAO_Abstract{
 
     @Override
     public Object list(int id) {
-                session.beginTransaction();
+        session.beginTransaction();
         Criteria criteria = session.createCriteria(VendedorRsj.class);
         criteria.add(Restrictions.eq("idvendedorRsj", id));
         List lista = criteria.list();
@@ -53,32 +53,42 @@ public class VendedorDAO extends DAO_Abstract{
 
     @Override
     public List listAll() {
-               session.beginTransaction();
+        session.beginTransaction();
         Criteria criteria = session.createCriteria(VendedorRsj.class);
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista;
     }
-    
-    public List listNome(String nome){
+
+    public List listNome(String nome) {
         session.beginTransaction();
-       Criteria criteria = session.createCriteria(VendedorRsj.class);
+        Criteria criteria = session.createCriteria(VendedorRsj.class);
         criteria.add(Restrictions.like("nomeRsj", "%" + nome + "%"));
         List lista = criteria.list();
         session.getTransaction().commit();
-    return lista;
-   
-    
-    } 
-    public List listFuncaoRsj(String funcao){
+        return lista;
+
+    }
+
+    public List listFuncao(int funcao) {
         session.beginTransaction();
-       Criteria criteria = session.createCriteria(VendedorRsj.class);
-        criteria.add(Restrictions.like("funcaoRsj", "%" + funcao + "%"));
+        Criteria criteria = session.createCriteria(VendedorRsj.class);
+        criteria.add(Restrictions.eq("funcaoRsj", funcao));
         List lista = criteria.list();
         session.getTransaction().commit();
-    return lista;
-   
-    
-    } 
-    
+        return lista;
+
+    }
+
+    public List listNomeFuncao(String nome, int funcao) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(VendedorRsj.class);
+        criteria.add(Restrictions.like("nomeRsj", "%" + nome + "%"));
+        criteria.add(Restrictions.eq("funcaoRsj", funcao));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+
+    }
+
 }

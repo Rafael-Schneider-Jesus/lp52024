@@ -67,6 +67,11 @@ public class JDlgClienteConsulta extends javax.swing.JDialog {
         jLabel2.setText("Renda Anual");
 
         JBtnConsulta.setText("Consulta");
+        JBtnConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBtnConsultaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,6 +116,10 @@ public class JDlgClienteConsulta extends javax.swing.JDialog {
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         setVisible(false);
     }//GEN-LAST:event_jBtnOkActionPerformed
+
+    private void JBtnConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtnConsultaActionPerformed
+
+    }//GEN-LAST:event_JBtnConsultaActionPerformed
 
     /**
      * @param args the command line arguments

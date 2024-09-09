@@ -1,12 +1,15 @@
 package view;
 
+import consulta.JDlgClienteConsulta;
+import consulta.JDlgProdutoConsulta;
+import consulta.JDlgUsuariosConsulta;
+import consulta.JDlgVendedorConsulta;
 import viewVendaPro.JDlgVenda;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author User
@@ -32,6 +35,11 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
+        jToolBar1 = new javax.swing.JToolBar();
+        jbtnConCliente = new javax.swing.JButton();
+        jbtnConUsuarios = new javax.swing.JButton();
+        jbtnConProduto = new javax.swing.JButton();
+        jbtnConVendedor = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jProduto = new javax.swing.JMenuItem();
@@ -46,15 +54,65 @@ public class JFrmPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jToolBar1.setRollover(true);
+
+        jbtnConCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-cliente-25.png"))); // NOI18N
+        jbtnConCliente.setFocusable(false);
+        jbtnConCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jbtnConCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jbtnConCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnConClienteActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jbtnConCliente);
+
+        jbtnConUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-usuário-25.png"))); // NOI18N
+        jbtnConUsuarios.setFocusable(false);
+        jbtnConUsuarios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jbtnConUsuarios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jbtnConUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnConUsuariosActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jbtnConUsuarios);
+
+        jbtnConProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-produto-25.png"))); // NOI18N
+        jbtnConProduto.setFocusable(false);
+        jbtnConProduto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jbtnConProduto.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jbtnConProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnConProdutoActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jbtnConProduto);
+
+        jbtnConVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-vendedor-25.png"))); // NOI18N
+        jbtnConVendedor.setFocusable(false);
+        jbtnConVendedor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jbtnConVendedor.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jbtnConVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnConVendedorActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jbtnConVendedor);
+
+        jDesktopPane1.setLayer(jToolBar1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 266, Short.MAX_VALUE)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 241, Short.MAX_VALUE))
         );
 
         jMenu1.setMnemonic('p');
@@ -145,13 +203,13 @@ public class JFrmPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-   
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jProdutoActionPerformed
         // TODO add your handling code here:
-         JDlgProduto jDlgProduto = new JDlgProduto(this, true);
-          jDlgProduto.setVisible(true);
+        JDlgProduto jDlgProduto = new JDlgProduto(this, true);
+        jDlgProduto.setVisible(true);
     }//GEN-LAST:event_jProdutoActionPerformed
 
     private void jUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUsuariosActionPerformed
@@ -160,23 +218,43 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jUsuariosActionPerformed
 
     private void jVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVendedorActionPerformed
-       JDlgVendedor jDlgVendedor = new JDlgVendedor(this, true);
+        JDlgVendedor jDlgVendedor = new JDlgVendedor(this, true);
         jDlgVendedor.setVisible(true);
     }//GEN-LAST:event_jVendedorActionPerformed
 
     private void jClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jClienteActionPerformed
-               JDlgcliente jDlgcliente = new JDlgcliente(this, true);
+        JDlgcliente jDlgcliente = new JDlgcliente(this, true);
         jDlgcliente.setVisible(true);
     }//GEN-LAST:event_jClienteActionPerformed
 
     private void jSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairActionPerformed
-         System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_jSairActionPerformed
 
     private void jVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVendaActionPerformed
         JDlgVenda jDlgVendass = new JDlgVenda(this, true);
         jDlgVendass.setVisible(true);
     }//GEN-LAST:event_jVendaActionPerformed
+
+    private void jbtnConClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnConClienteActionPerformed
+        JDlgClienteConsulta jDlgClienteConsulta = new JDlgClienteConsulta(this, true);
+        jDlgClienteConsulta.setVisible(true);
+    }//GEN-LAST:event_jbtnConClienteActionPerformed
+
+    private void jbtnConProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnConProdutoActionPerformed
+        JDlgProdutoConsulta jDlgProdutoConsulta = new JDlgProdutoConsulta(this, true);
+        jDlgProdutoConsulta.setVisible(true);
+    }//GEN-LAST:event_jbtnConProdutoActionPerformed
+
+    private void jbtnConUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnConUsuariosActionPerformed
+        JDlgUsuariosConsulta jDlgUsuariosConsulta = new JDlgUsuariosConsulta(this, true);
+        jDlgUsuariosConsulta.setVisible(true);
+    }//GEN-LAST:event_jbtnConUsuariosActionPerformed
+
+    private void jbtnConVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnConVendedorActionPerformed
+        JDlgVendedorConsulta jDlgVendedorConsulta = new JDlgVendedorConsulta(this, true);
+        jDlgVendedorConsulta.setVisible(true);
+    }//GEN-LAST:event_jbtnConVendedorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,7 +288,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 JFrmLogin JFrmLogim = new JFrmLogin();
-           JFrmLogim.setVisible(true) ;
+                JFrmLogim.setVisible(true);
             }
         });
     }
@@ -225,8 +303,13 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jProduto;
     private javax.swing.JMenuItem jSair;
+    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenuItem jUsuarios;
     private javax.swing.JMenuItem jVenda;
     private javax.swing.JMenuItem jVendedor;
+    private javax.swing.JButton jbtnConCliente;
+    private javax.swing.JButton jbtnConProduto;
+    private javax.swing.JButton jbtnConUsuarios;
+    private javax.swing.JButton jbtnConVendedor;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,15 +10,17 @@ import viewControle.UsuariosControle;
 import dao.UsuariosDAO;
 import java.util.List;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author User
  */
 public class JDlgUsuariosPesquisa extends javax.swing.JDialog {
 
-        private JDlgUsuarios jDlgUsuarios;
-        private  UsuariosDAO usuariosDAO;
-     UsuariosControle usuariosControle;
+    private JDlgUsuarios jDlgUsuarios;
+    private UsuariosDAO usuariosDAO;
+    UsuariosControle usuariosControle;
+
     /**
      * Creates new form JDlgUsuariosPesquisa
      */
@@ -27,24 +29,19 @@ public class JDlgUsuariosPesquisa extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Consulta de Usuarios");
-        
-        
-        
-        
-       usuariosControle = new UsuariosControle();
-       usuariosDAO = new UsuariosDAO();
-       
-       List lista = usuariosDAO.listAll();
+
+        usuariosControle = new UsuariosControle();
+        usuariosDAO = new UsuariosDAO();
+
+        List lista = usuariosDAO.listAll();
         usuariosControle.setList(lista);
-        jTable1.setModel(usuariosControle);      
-      
+        jTable1.setModel(usuariosControle);
+
         initComponents();
-      
-        
-         
-     
+
     }
-       public void setTelaAnterior(JDlgUsuarios jDlgUsuarios) {
+
+    public void setTelaAnterior(JDlgUsuarios jDlgUsuarios) {
         this.jDlgUsuarios = jDlgUsuarios;
     }
 
@@ -119,17 +116,17 @@ public class JDlgUsuariosPesquisa extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-if ( jTable1.getSelectedRow() == -1 ) {
+        if (jTable1.getSelectedRow() == -1) {
             tools.Util.msg("Nenhuma registro selecionado.");
         } else {
             int sel = jTable1.getSelectedRow();
-            jDlgUsuarios.beanView(usuariosControle.getUsuarioRsj(sel) );            
+            jDlgUsuarios.beanView(usuariosControle.getUsuarioRsj(sel));
             setVisible(false);
         }
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-     setVisible(false);
+        setVisible(false);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**

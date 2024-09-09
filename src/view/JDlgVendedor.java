@@ -1,8 +1,9 @@
- /*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package view;
+
 import dao.VendedorDAO;
 import bean.VendedorRsj;
 import viewPesquisa.JDlgVendedorPesquisa;
@@ -12,24 +13,24 @@ import viewPesquisa.JDlgVendedorPesquisa;
  * @author User
  */
 public class JDlgVendedor extends javax.swing.JDialog {
-   VendedorRsj vendedorRsj;
-   VendedorDAO vendedorDAO;
-   boolean incluindo;
+
+    VendedorRsj vendedorRsj;
+    VendedorDAO vendedorDAO;
+    boolean incluindo;
+
     /**
      * Creates new form JDlgVendedor
      */
     public JDlgVendedor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        
-         vendedorDAO = new VendedorDAO();
+
+        vendedorDAO = new VendedorDAO();
         initComponents();
         setTitle("Venderdor");
         setLocationRelativeTo(null);
-        tools.Util.habilitar(false,jTelefone, jTxtCodigo, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao, jbtnExcluir,jBtnComfirmar,jBtnCancelar,jBtnAlterar);
+        tools.Util.habilitar(false, jTelefone, jTxtCodigo, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao, jbtnExcluir, jBtnComfirmar, jBtnCancelar, jBtnAlterar);
     }
-    
-    
-    
+
     public void beanView(VendedorRsj vendedorRsj) {
         jTxtCodigo.setText(tools.Util.intStr(vendedorRsj.getIdvendedorRsj()));
         jTxtSobre.setText(vendedorRsj.getSobrenomeRsj());
@@ -40,13 +41,13 @@ public class JDlgVendedor extends javax.swing.JDialog {
         jTelefone.setText(vendedorRsj.getTelefoneRsj());
 
     }
-    
+
     public VendedorRsj viewBean() {
-        VendedorRsj vendedorRsj = new VendedorRsj();  
+        VendedorRsj vendedorRsj = new VendedorRsj();
         vendedorRsj.setIdvendedorRsj(tools.Util.strInt(jTxtCodigo.getText()));
         vendedorRsj.setSobrenomeRsj(jTxtSobre.getText());
         vendedorRsj.setCpfRsj(jCpf.getText());
-       vendedorRsj.setTelefoneRsj(jTelefone.getText());
+        vendedorRsj.setTelefoneRsj(jTelefone.getText());
         vendedorRsj.setFuncaoRsj(jcboFuncao.getSelectedIndex());
         vendedorRsj.setNomeRsj(jTxtNome.getText());
         vendedorRsj.setSenhaRsj(jSenha.getText());
@@ -268,56 +269,50 @@ public class JDlgVendedor extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExcluirActionPerformed
-  tools.Util.limp(jTelefone, jTxtCodigo, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao);         
-  tools.Util.habilitar(false,jTelefone, jTxtCodigo, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao, jBtnComfirmar,jBtnCancelar,jbtnExcluir, jBtnAlterar);
-  tools.Util.perguntar(null);
-  tools.Util.habilitar(true, jBtnpesquisar,jBtnIncluir);
+        tools.Util.limp(jTelefone, jTxtCodigo, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao);
+        tools.Util.habilitar(false, jTelefone, jTxtCodigo, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao, jBtnComfirmar, jBtnCancelar, jbtnExcluir, jBtnAlterar);
+        tools.Util.perguntar(null);
+        tools.Util.habilitar(true, jBtnpesquisar, jBtnIncluir);
     }//GEN-LAST:event_jbtnExcluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-     tools.Util.habilitar(true,jTelefone, jTxtCodigo, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao, jBtnComfirmar);
-   tools.Util.habilitar(false,jBtnpesquisar, jBtnIncluir, jBtnAlterar, jbtnExcluir);
-   incluindo = false;
+        tools.Util.habilitar(true, jTelefone, jTxtCodigo, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao, jBtnComfirmar);
+        tools.Util.habilitar(false, jBtnpesquisar, jBtnIncluir, jBtnAlterar, jbtnExcluir);
+        incluindo = false;
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnpesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnpesquisarActionPerformed
         JDlgVendedorPesquisa jDlgVendedorPesquisa = new JDlgVendedorPesquisa(null, true);
-        jDlgVendedorPesquisa.setTelaAnterior(this);        
+        jDlgVendedorPesquisa.setTelaAnterior(this);
         jDlgVendedorPesquisa.setVisible(true);
-        
-        
-  tools.Util.habilitar(true,jTelefone, jTxtCodigo, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao, jbtnExcluir,jBtnComfirmar,jBtnCancelar,jBtnAlterar);
-  tools.Util.habilitar(false,jBtnpesquisar, jBtnComfirmar, jBtnIncluir);
+
+        tools.Util.habilitar(true, jTelefone, jTxtCodigo, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao, jbtnExcluir, jBtnComfirmar, jBtnCancelar, jBtnAlterar);
+        tools.Util.habilitar(false, jBtnpesquisar, jBtnComfirmar, jBtnIncluir);
     }//GEN-LAST:event_jBtnpesquisarActionPerformed
 
     private void jBtnComfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnComfirmarActionPerformed
-            
-            if (incluindo == true) {
+
+        if (incluindo == true) {
             vendedorDAO.insert(viewBean());
         } else {
             vendedorDAO.upedate(viewBean());
         }
-        
-       
-        
-        
-        
-        
-        tools.Util.limp(jTelefone, jTxtCodigo, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao); 
-      tools.Util.habilitar(false,jTelefone, jTxtCodigo, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao, jBtnComfirmar,jBtnCancelar,jbtnExcluir);
-      tools.Util.habilitar(true, jBtnpesquisar,jBtnIncluir);
+
+        tools.Util.limp(jTelefone, jTxtCodigo, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao);
+        tools.Util.habilitar(false, jTelefone, jTxtCodigo, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao, jBtnComfirmar, jBtnCancelar, jbtnExcluir);
+        tools.Util.habilitar(true, jBtnpesquisar, jBtnIncluir);
     }//GEN-LAST:event_jBtnComfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-    tools.Util.limp(jTelefone, jTxtCodigo, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao); 
-      tools.Util.habilitar(false,jTxtCodigo,jTelefone, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao, jBtnComfirmar,jBtnCancelar,jbtnExcluir);
-      tools.Util.habilitar(true, jBtnpesquisar,jBtnIncluir);
+        tools.Util.limp(jTelefone, jTxtCodigo, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao);
+        tools.Util.habilitar(false, jTxtCodigo, jTelefone, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao, jBtnComfirmar, jBtnCancelar, jbtnExcluir);
+        tools.Util.habilitar(true, jBtnpesquisar, jBtnIncluir);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
-        tools.Util.habilitar(true,jTelefone, jTxtCodigo, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao, jBtnComfirmar, jBtnCancelar);
-    tools.Util.habilitar(false, jBtnpesquisar, jBtnIncluir);
-    incluindo = true;
+        tools.Util.habilitar(true, jTelefone, jTxtCodigo, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao, jBtnComfirmar, jBtnCancelar);
+        tools.Util.habilitar(false, jBtnpesquisar, jBtnIncluir);
+        incluindo = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     /**

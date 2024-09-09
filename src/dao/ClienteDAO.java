@@ -14,7 +14,7 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author User
  */
-public class ClienteDAO extends DAO_Abstract{
+public class ClienteDAO extends DAO_Abstract {
 
     @Override
     public void insert(Object object) {
@@ -43,7 +43,7 @@ public class ClienteDAO extends DAO_Abstract{
 
     @Override
     public Object list(int id) {
-                session.beginTransaction();
+        session.beginTransaction();
         Criteria criteria = session.createCriteria(ClienteRsj.class);
         criteria.add(Restrictions.eq("idclienteRsj", id));
         List lista = criteria.list();
@@ -53,31 +53,41 @@ public class ClienteDAO extends DAO_Abstract{
 
     @Override
     public List listAll() {
-               session.beginTransaction();
+        session.beginTransaction();
         Criteria criteria = session.createCriteria(ClienteRsj.class);
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista;
     }
-    
-    public List listValor(double valor){
+
+    public List listValor(double valor) {
         session.beginTransaction();
-       Criteria criteria = session.createCriteria(ClienteRsj.class);
-        criteria.add(Restrictions.le("rendaanualRsj",  valor ));      
+        Criteria criteria = session.createCriteria(ClienteRsj.class);
+        criteria.add(Restrictions.le("rendaanualRsj", valor));
         List lista = criteria.list();
         session.getTransaction().commit();
-    return lista;
-    }    
-    
-          public List listNome(String nome){
+        return lista;
+    }
+
+    public List listNome(String nome) {
         session.beginTransaction();
-       Criteria criteria = session.createCriteria(ClienteRsj.class);
+        Criteria criteria = session.createCriteria(ClienteRsj.class);
         criteria.add(Restrictions.like("nomeRsj", "%" + nome + "%"));
         List lista = criteria.list();
         session.getTransaction().commit();
-    return lista;
-   
-    
-    } 
-    
+        return lista;
+
+    }
+
+    public List listValorQuant(String nome, double valor) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(ClienteRsj.class);
+        criteria.add(Restrictions.le("nomeRsj", nome));
+        criteria.add(Restrictions.le("rendaanualRsj", valor));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+
+    }
+
 }

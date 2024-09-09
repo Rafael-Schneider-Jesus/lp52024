@@ -14,7 +14,7 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author User
  */
-public class VendaprodutoDAO extends DAO_Abstract{
+public class VendaprodutoDAO extends DAO_Abstract {
 
     @Override
     public void insert(Object object) {
@@ -43,7 +43,7 @@ public class VendaprodutoDAO extends DAO_Abstract{
 
     @Override
     public Object list(int id) {
-              session.beginTransaction();
+        session.beginTransaction();
         Criteria criteria = session.createCriteria(VendaprodutoRsj.class);
         criteria.add(Restrictions.eq("idvendaprodutoRsj", id));
         List lista = criteria.list();
@@ -53,11 +53,11 @@ public class VendaprodutoDAO extends DAO_Abstract{
 
     @Override
     public List listAll() {
-                session.beginTransaction();
+        session.beginTransaction();
         Criteria criteria = session.createCriteria(VendaprodutoRsj.class);
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista;
     }
-    
+
 }

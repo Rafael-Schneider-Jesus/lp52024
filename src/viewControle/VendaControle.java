@@ -12,19 +12,22 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author User
  */
-public class VendaControle extends AbstractTableModel{
+public class VendaControle extends AbstractTableModel {
+
     private List lista;
+
     public void setList(List lista) {
         this.lista = lista;
         this.fireTableDataChanged();
     }
-public VendaRsj getVendaRsj(int rowIndex){
-return  (VendaRsj) lista.get(rowIndex);
-}
+
+    public VendaRsj getVendaRsj(int rowIndex) {
+        return (VendaRsj) lista.get(rowIndex);
+    }
 
     @Override
     public int getRowCount() {
-          return lista.size();
+        return lista.size();
     }
 
     @Override
@@ -34,22 +37,23 @@ return  (VendaRsj) lista.get(rowIndex);
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-      VendaRsj vendaRsj = (VendaRsj) lista.get(rowIndex);
+        VendaRsj vendaRsj = (VendaRsj) lista.get(rowIndex);
         if (columnIndex == 0) {
-           return vendaRsj.getIdvendaRsj();
-        } 
+            return vendaRsj.getIdvendaRsj();
+        }
         if (columnIndex == 1) {
-           return vendaRsj.getFormapagamentoRsj();
-        } 
+            return vendaRsj.getFormapagamentoRsj();
+        }
         if (columnIndex == 2) {
-           return vendaRsj.getTotalRsj();
-        } 
+            return vendaRsj.getTotalRsj();
+        }
         if (columnIndex == 3) {
-           return vendaRsj.getDatavendaRsj();
-        } 
+            return vendaRsj.getDatavendaRsj();
+        }
         return null;
     }
-           public String getColumnName(int column) {
+
+    public String getColumnName(int column) {
         if (column == 0) {
             return "Id";
         }
@@ -67,5 +71,5 @@ return  (VendaRsj) lista.get(rowIndex);
         }
         return "";
     }
-    
+
 }

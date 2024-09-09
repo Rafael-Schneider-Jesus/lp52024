@@ -17,9 +17,11 @@ import viewControle.ProdutoControle;
  * @author User
  */
 public class JDlgProdutoPesquisa extends javax.swing.JDialog {
+
     private JDlgProduto jDlgProduto;
-     ProdutoControle produtoControle;
-     ProdutoDAO produtoDAO;
+    ProdutoControle produtoControle;
+    ProdutoDAO produtoDAO;
+
     /**
      * Creates new form JDlgProdutoPesquisa
      */
@@ -29,22 +31,19 @@ public class JDlgProdutoPesquisa extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         setTitle("Consulta de Produto");
 
-        
-        
-          produtoDAO = new ProdutoDAO();
+        produtoDAO = new ProdutoDAO();
         produtoControle = new ProdutoControle();
-        produtoControle.setList( produtoDAO.listAll() );
+        produtoControle.setList(produtoDAO.listAll());
         jTable1.setModel(produtoControle);
-         
-      
+
         initComponents();
-        
-        
-        
+
     }
-       public void setTelaAnterior(JDlgProduto jDlgProduto) {
+
+    public void setTelaAnterior(JDlgProduto jDlgProduto) {
         this.jDlgProduto = jDlgProduto;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -120,17 +119,17 @@ public class JDlgProdutoPesquisa extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-if ( jTable1.getSelectedRow() == -1 ) {
+        if (jTable1.getSelectedRow() == -1) {
             tools.Util.msg("Nenhuma registro selecionado.");
         } else {
             int sel = jTable1.getSelectedRow();
-            jDlgProduto.beanView(produtoControle.getProdutoRsj(sel) );            
+            jDlgProduto.beanView(produtoControle.getProdutoRsj(sel));
             setVisible(false);
         }
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-       setVisible(false);
+        setVisible(false);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**

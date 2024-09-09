@@ -15,10 +15,12 @@ import java.util.List;
  * @author User
  */
 public class JDlgVendedorPesquisa extends javax.swing.JDialog {
-     private JDlgVendedor jDlgVendedor;
-     VendedorDAO vendedorDAO;
-     VendedorRsj vendedorRsj;
-     VendedorControle vendedorControle;
+
+    private JDlgVendedor jDlgVendedor;
+    VendedorDAO vendedorDAO;
+    VendedorRsj vendedorRsj;
+    VendedorControle vendedorControle;
+
     /**
      * Creates new form JDlgVendedorPesquisa
      */
@@ -27,23 +29,22 @@ public class JDlgVendedorPesquisa extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Consulta de Vendedor");
-         vendedorControle = new VendedorControle();
-        jTable1.setModel(vendedorControle); 
-        
-        
+        vendedorControle = new VendedorControle();
+        jTable1.setModel(vendedorControle);
+
         vendedorControle = new VendedorControle();
         vendedorRsj = new VendedorRsj();
         vendedorDAO = new VendedorDAO();
-          List lista = vendedorDAO.listAll();
+        List lista = vendedorDAO.listAll();
         vendedorControle.setList(lista);
-        jTable1.setModel(vendedorControle);      
-      
+        jTable1.setModel(vendedorControle);
+
         initComponents();
-        jTable1.setModel(vendedorControle);  
-        
+        jTable1.setModel(vendedorControle);
+
     }
-    
-           public void setTelaAnterior(JDlgVendedor jDlgVendedor) {
+
+    public void setTelaAnterior(JDlgVendedor jDlgVendedor) {
         this.jDlgVendedor = jDlgVendedor;
     }
 
@@ -118,13 +119,13 @@ public class JDlgVendedorPesquisa extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-       setVisible(false);
+        setVisible(false);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-            int rowSel = jTable1.getSelectedRow();
-       VendedorRsj vendedor = vendedorControle.getVendedorRsj(rowSel);
-       jDlgVendedor.beanView(vendedor);
+        int rowSel = jTable1.getSelectedRow();
+        VendedorRsj vendedor = vendedorControle.getVendedorRsj(rowSel);
+        jDlgVendedor.beanView(vendedor);
         setVisible(false);
     }//GEN-LAST:event_jBtnOkActionPerformed
 

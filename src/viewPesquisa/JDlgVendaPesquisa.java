@@ -4,7 +4,6 @@
  */
 package viewPesquisa;
 
-
 import viewVendaPro.JDlgVenda;
 import viewControle.VendaControle;
 import dao.VendaDAO;
@@ -16,42 +15,37 @@ import bean.VendaRsj;
  * @author User
  */
 public class JDlgVendaPesquisa extends javax.swing.JDialog {
+
     private JDlgVenda jDlgVenda;
     VendaRsj vendaRsj;
     VendaDAO vendaDAO;
     VendaControle vendaControle;
-    
+
     /**
      * Creates new form JDlgVendaPesquisa
      */
     public JDlgVendaPesquisa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         setLocationRelativeTo(null);
         setTitle("Consulta de Venda");
-       vendaControle = new VendaControle();
-        jTable1.setModel(vendaControle); 
+        vendaControle = new VendaControle();
+        jTable1.setModel(vendaControle);
         vendaDAO = new VendaDAO();
-        
-        
-        
-        
-        
-          List lista = vendaDAO.listAll();
+
+        List lista = vendaDAO.listAll();
         vendaControle.setList(lista);
-        jTable1.setModel(vendaControle);      
-      
+        jTable1.setModel(vendaControle);
+
         initComponents();
-      
-        
-        
-        
+
     }
 
-           public void setTelaAnterior(JDlgVenda jDlgVenda) {
+    public void setTelaAnterior(JDlgVenda jDlgVenda) {
         this.jDlgVenda = jDlgVenda;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -123,13 +117,13 @@ public class JDlgVendaPesquisa extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-       setVisible(false);
+        setVisible(false);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-           int rowSel = jTable1.getSelectedRow();
-     //   VendaRsj venda = vendaControle.getVendaRsj(rowSel); 
-     //  jDlgVenda.bean(venda);
+        int rowSel = jTable1.getSelectedRow();
+        //   VendaRsj venda = vendaControle.getVendaRsj(rowSel); 
+        //  jDlgVenda.bean(venda);
         setVisible(false);
     }//GEN-LAST:event_jBtnOkActionPerformed
 

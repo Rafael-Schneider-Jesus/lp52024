@@ -19,9 +19,8 @@ public class JDlgPedido extends javax.swing.JDialog {
     public JDlgPedido(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
-        
-        tools.Util.habilitar(false, jBtnAlterar,jBtnCancelar,jBtnConfirmar,jBtnExcluir,jBtnExcluir1,jBtnAlterar1, jCboCliente,jCboVendedor, jTxtCodigo, jTxtTotal,jFmtData);
+
+        tools.Util.habilitar(false, jBtnAlterar, jBtnCancelar, jBtnConfirmar, jBtnExcluir, jBtnExcluir1, jBtnAlterar1, jCboCliente, jCboVendedor, jTxtCodigo, jTxtTotal, jFmtData);
     }
 
     /**
@@ -279,7 +278,7 @@ public class JDlgPedido extends javax.swing.JDialog {
     }//GEN-LAST:event_jTxtTotalActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
-        tools.Util.habilitar(true, jBtnAlterar,jBtnCancelar,jBtnConfirmar,jBtnExcluir,jBtnExcluir1,jBtnAlterar1, jCboCliente,jCboVendedor, jTxtCodigo, jTxtTotal,jFmtData);
+        tools.Util.habilitar(true, jBtnAlterar, jBtnCancelar, jBtnConfirmar, jBtnExcluir, jBtnExcluir1, jBtnAlterar1, jCboCliente, jCboVendedor, jTxtCodigo, jTxtTotal, jFmtData);
 
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
@@ -300,7 +299,7 @@ public class JDlgPedido extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
-        tools.Util.habilitar(true, jBtnAlterar,jBtnCancelar,jBtnConfirmar,jBtnExcluir,jBtnExcluir1,jBtnAlterar1);
+        tools.Util.habilitar(true, jBtnAlterar, jBtnCancelar, jBtnConfirmar, jBtnExcluir, jBtnExcluir1, jBtnAlterar1);
 
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 

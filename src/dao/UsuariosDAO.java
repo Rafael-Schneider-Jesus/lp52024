@@ -59,35 +59,46 @@ public class UsuariosDAO extends DAO_Abstract {
         session.getTransaction().commit();
         return lista;
     }
-     public List busca(String tab, String var){
+
+    public List busca(String tab, String var) {
         session.beginTransaction();
-       Criteria criteria = session.createCriteria(UsuarioRsj.class);
-        criteria.add(Restrictions.eq(tab, var ));
-          List lista = criteria.list();
-       
+        Criteria criteria = session.createCriteria(UsuarioRsj.class);
+        criteria.add(Restrictions.eq(tab, var));
+        List lista = criteria.list();
+
         session.getTransaction().commit();
-    return  lista;
-     }
-     public List listNome(String nome){
+        return lista;
+    }
+
+    public List listNome(String nome) {
         session.beginTransaction();
-       Criteria criteria = session.createCriteria(UsuarioRsj.class);
+        Criteria criteria = session.createCriteria(UsuarioRsj.class);
         criteria.add(Restrictions.like("nomeRsj", "%" + nome + "%"));
         List lista = criteria.list();
         session.getTransaction().commit();
-    return lista;
-   
-    
-    } 
-    public List listFuncaoRsj(String cpf){
+        return lista;
+
+    }
+
+    public List listAtivo(String ativo) {
         session.beginTransaction();
-       Criteria criteria = session.createCriteria(UsuarioRsj.class);
-        criteria.add(Restrictions.like("cpfRsj", "%" + cpf + "%"));
+        Criteria criteria = session.createCriteria(UsuarioRsj.class);
+        criteria.add(Restrictions.like("ativoRsj", ativo));
         List lista = criteria.list();
         session.getTransaction().commit();
-    return lista;
-   
-    
-    } 
+        return lista;
 
+    }
+
+    public List listNomeAtivo(String nome, String ativo) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(UsuarioRsj.class);
+        criteria.add(Restrictions.like("nomeRsj", "%" + nome + "%"));
+        criteria.add(Restrictions.like("ativoRsj", ativo));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+
+    }
 
 }

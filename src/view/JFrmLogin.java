@@ -14,13 +14,14 @@ import javax.swing.JOptionPane;
 public class JFrmLogin extends javax.swing.JFrame {
 
     int tentativa;
+
     /**
      * Creates new form JFrmLogin
      */
     public JFrmLogin() {
         initComponents();
-       
-         setLocationRelativeTo(null);
+
+        setLocationRelativeTo(null);
         setTitle("Login");
     }
 
@@ -121,7 +122,7 @@ public class JFrmLogin extends javax.swing.JFrame {
 
     private void jPwfSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPwfSenhaActionPerformed
         // TODO add your handling code here:
-         String borges = "1";
+        String borges = "1";
     }//GEN-LAST:event_jPwfSenhaActionPerformed
 
     private void JTxtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTxtUsuarioActionPerformed
@@ -129,22 +130,23 @@ public class JFrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_JTxtUsuarioActionPerformed
 
     private void jBtnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEntrarActionPerformed
-UsuariosDAO usuariosDAO = new UsuariosDAO();
-              
-        if(tentativa<3){ 
-        if ( usuariosDAO.busca("apelidoRsj", JTxtUsuario.getText()).size() !=0 && usuariosDAO.busca("senhaRsj", jPwfSenha.getText()).size()!=0) { 
-            JFrmPrincipal jFrmPrincipal = new JFrmPrincipal();
-            jFrmPrincipal.setVisible(true) ;
-        
-       
-        this.dispose();        
-        }else{ 
-           
-          JOptionPane.showMessageDialog(null, "Senha ou Usuario incorretas");
-         tentativa = tentativa+1;
-        }}else{
-             JOptionPane.showMessageDialog(null, "Numeros de tentativas exedidas");
-            System.exit(0);}
+        UsuariosDAO usuariosDAO = new UsuariosDAO();
+
+        if (tentativa < 3) {
+            if (usuariosDAO.busca("apelidoRsj", JTxtUsuario.getText()).size() != 0 && usuariosDAO.busca("senhaRsj", jPwfSenha.getText()).size() != 0) {
+                JFrmPrincipal jFrmPrincipal = new JFrmPrincipal();
+                jFrmPrincipal.setVisible(true);
+
+                this.dispose();
+            } else {
+
+                JOptionPane.showMessageDialog(null, "Senha ou Usuario incorretas");
+                tentativa = tentativa + 1;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Numeros de tentativas exedidas");
+            System.exit(0);
+        }
 
 
     }//GEN-LAST:event_jBtnEntrarActionPerformed

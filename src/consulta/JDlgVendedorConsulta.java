@@ -4,11 +4,17 @@
  */
 package consulta;
 
+import dao.VendedorDAO;
+import java.util.List;
+import viewControle.VendedorControle;
+
 /**
  *
  * @author User
  */
 public class JDlgVendedorConsulta extends javax.swing.JDialog {
+
+    VendedorControle vendedorControle;
 
     /**
      * Creates new form JDlgClienteConsulta
@@ -67,6 +73,11 @@ public class JDlgVendedorConsulta extends javax.swing.JDialog {
         jLabel2.setText("função");
 
         JBtnConsulta.setText("Consulta");
+        JBtnConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBtnConsultaActionPerformed(evt);
+            }
+        });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vendedor", "gerente", "estagiario" }));
 
@@ -113,6 +124,32 @@ public class JDlgVendedorConsulta extends javax.swing.JDialog {
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         setVisible(false);
     }//GEN-LAST:event_jBtnOkActionPerformed
+
+    private void JBtnConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtnConsultaActionPerformed
+        // TODO add your handling code here:
+
+        vendedorControle = new VendedorControle();
+        VendedorDAO vendedorDAO = new VendedorDAO();
+
+        if (jTxtNome.getText().equals("") && jComboBox1.getSelectedIndex() == 4) {
+            List lista = vendedorDAO.listAll();
+            vendedorControle.setList(lista);
+            jTable1.setModel(vendedorControle);
+
+        } else if (!jTxtNome.getText().equals("") && jComboBox1.getSelectedIndex() < 4) {
+            List lista = vendedorDAO.listNomeFuncao(jTxtNome.getText(), jComboBox1.getSelectedIndex());
+            vendedorControle.setList(lista);
+            jTable1.setModel(vendedorControle);
+        } else if (!jTxtNome.getText().equals("") && jComboBox1.getSelectedIndex() == 4) {
+            List lista = vendedorDAO.listNome(jTxtNome.getText());
+            vendedorControle.setList(lista);
+            jTable1.setModel(vendedorControle);
+        } else {
+            List lista = vendedorDAO.listFuncao(jComboBox1.getSelectedIndex());
+            vendedorControle.setList(lista);
+            jTable1.setModel(vendedorControle);
+        }
+    }//GEN-LAST:event_JBtnConsultaActionPerformed
 
     /**
      * @param args the command line arguments

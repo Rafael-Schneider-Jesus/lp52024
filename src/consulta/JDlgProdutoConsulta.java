@@ -14,7 +14,9 @@ import viewControle.ProdutoControle;
  * @author User
  */
 public class JDlgProdutoConsulta extends javax.swing.JDialog {
-ProdutoControle produtoControle;
+
+    ProdutoControle produtoControle;
+
     /**
      * Creates new form JDlgClienteConsulta
      */

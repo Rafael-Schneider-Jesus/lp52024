@@ -12,44 +12,48 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author User
  */
-public class ClienteControle extends AbstractTableModel{
-   private List lista;  
+public class ClienteControle extends AbstractTableModel {
+
+    private List lista;
+
     public void setList(List lista) {
         this.lista = lista;
         this.fireTableDataChanged();
     }
-public ClienteRsj getClienteRsj(int rowIndex){
-return  (ClienteRsj) lista.get(rowIndex);
-}
+
+    public ClienteRsj getClienteRsj(int rowIndex) {
+        return (ClienteRsj) lista.get(rowIndex);
+    }
 
     @Override
     public int getRowCount() {
-      return lista.size();
+        return lista.size();
     }
 
     @Override
     public int getColumnCount() {
-   return 4;
+        return 4;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-          ClienteRsj clienteRsj = (ClienteRsj) lista.get(rowIndex);
+        ClienteRsj clienteRsj = (ClienteRsj) lista.get(rowIndex);
         if (columnIndex == 0) {
-           return clienteRsj.getIdclienteRsj();
-        } 
+            return clienteRsj.getIdclienteRsj();
+        }
         if (columnIndex == 1) {
-           return clienteRsj.getNomeRsj();
-        } 
+            return clienteRsj.getNomeRsj();
+        }
         if (columnIndex == 2) {
-           return clienteRsj.getSobrenomeRsj();
-        } 
+            return clienteRsj.getSobrenomeRsj();
+        }
         if (columnIndex == 3) {
-           return clienteRsj.getEmailRsj();
-        } 
+            return clienteRsj.getEmailRsj();
+        }
         return null;
     }
-           public String getColumnName(int column) {
+
+    public String getColumnName(int column) {
         if (column == 0) {
             return "Id";
         }
@@ -64,5 +68,5 @@ return  (ClienteRsj) lista.get(rowIndex);
         }
         return "";
     }
-    
+
 }

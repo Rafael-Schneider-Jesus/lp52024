@@ -17,41 +17,45 @@ import javax.swing.JTextField;
  * @author User
  */
 public class Util {
-     public static void habilitar(boolean valor, JComponent ... vetCampo) {
-         for (JComponent vetCampo1 : vetCampo) {
-             vetCampo1.setEnabled(valor);
-         }
+
+    public static void habilitar(boolean valor, JComponent... vetCampo) {
+        for (JComponent vetCampo1 : vetCampo) {
+            vetCampo1.setEnabled(valor);
+        }
     }
-    
-    public static void limp(JComponent ... vetComp) {
+
+    public static void limp(JComponent... vetComp) {
         for (int i = 0; i < vetComp.length; i++) {
-           if (vetComp[i] instanceof JTextField){
-           ( (JTextField) vetComp[i]).setText("");
-           }
-           if (vetComp[i] instanceof JComboBox){
-           ((JComboBox)vetComp[i]).setSelectedIndex(-1);
-           }
-           if ( vetComp[i] instanceof JCheckBox) {
-             ((JCheckBox) vetComp[i]).setSelected(false);
+            if (vetComp[i] instanceof JTextField) {
+                ((JTextField) vetComp[i]).setText("");
+            }
+            if (vetComp[i] instanceof JComboBox) {
+                ((JComboBox) vetComp[i]).setSelectedIndex(-1);
+            }
+            if (vetComp[i] instanceof JCheckBox) {
+                ((JCheckBox) vetComp[i]).setSelected(false);
             }
         }
     }
-    public static void msg( String mensagem) {
-         JOptionPane.showMessageDialog(null, mensagem);
+
+    public static void msg(String mensagem) {
+        JOptionPane.showMessageDialog(null, mensagem);
     }
+
     public static boolean perguntar(String mensagem) {
 //       int resp = JOptionPane.showConfirmDialog(null, "Confirmar exclusão?",
 //       "Pergunta", JOptionPane.YES_NO_OPTION);
-       
-       int resp = JOptionPane.showConfirmDialog(null, "Confirmar exclusão?",
-       "Pergunta", JOptionPane.YES_NO_OPTION);
-       
+
+        int resp = JOptionPane.showConfirmDialog(null, "Confirmar exclusão?",
+                "Pergunta", JOptionPane.YES_NO_OPTION);
+
         return false;
     }
-       public static int strInt(String cad) {
- 
-            return Integer.valueOf(cad);
-      
+
+    public static int strInt(String cad) {
+
+        return Integer.valueOf(cad);
+
     }
 
     public static String intStr(int num) {
@@ -59,9 +63,9 @@ public class Util {
     }
 
     public static double strDouble(String cad) {
-       
-            return Double.parseDouble(cad);
-       
+
+        return Double.parseDouble(cad);
+
     }
 
     public static String doubleStr(double num) {
@@ -82,5 +86,5 @@ public class Util {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         return formato.format(cad);
     }
-    
+
 }

@@ -14,8 +14,10 @@ import viewPesquisa.JDlgUsuariosPesquisa;
  * @author User
  */
 public class JDlgProduto extends javax.swing.JDialog {
- ProdutoDAO produtoDAO;
- boolean incluindo;
+
+    ProdutoDAO produtoDAO;
+    boolean incluindo;
+
     /**
      * Creates new form JDlgProduto
      */
@@ -24,32 +26,26 @@ public class JDlgProduto extends javax.swing.JDialog {
         initComponents();
         setTitle("Produto");
         setLocationRelativeTo(null);
-         tools.Util.habilitar(false,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jbtnExcluir,jBtnComfirmar,jBtnCancelar,jBtnAlterar,jCboEntrega);
+        tools.Util.habilitar(false, jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jbtnExcluir, jBtnComfirmar, jBtnCancelar, jBtnAlterar, jCboEntrega);
     }
-    
-    public void beanView(ProdutoRsj produtoRsj){
+
+    public void beanView(ProdutoRsj produtoRsj) {
         jtxtCodigo.setText(tools.Util.intStr(produtoRsj.getIdprodutoRsj()));
         jtxtsabor.setText(produtoRsj.getSaborRsj());
-      // jCboEntrega.setSelectedIndex(produtoRsj.getEntregaRsj());
-       //jCbocopo.setSelectedIndex(produtoRsj.getCopooucasquinhaRsj());
-       //jCbotamanho.setSelectedIndex(produtoRsj.getTamanhoRsj());
+        // jCboEntrega.setSelectedIndex(produtoRsj.getEntregaRsj());
+        //jCbocopo.setSelectedIndex(produtoRsj.getCopooucasquinhaRsj());
+        //jCbotamanho.setSelectedIndex(produtoRsj.getTamanhoRsj());
     }
+
     public ProdutoRsj viewBean() {
-        ProdutoRsj produtoRsj = new ProdutoRsj();  
+        ProdutoRsj produtoRsj = new ProdutoRsj();
         produtoRsj.setIdprodutoRsj(tools.Util.strInt(jtxtCodigo.getText()));
         produtoRsj.setSaborRsj(jtxtsabor.getText());
-       // produtoRsj.setEntregaRsj(jCboEntrega.getSelectedIndex());
-       // produtoRsj.setCopooucasquinhaRsj(jCbocopo.getSelectedIndex());
-       //produtoRsj.setTamanhoRsj(jCbotamanho.getSelectedIndex());
+        // produtoRsj.setEntregaRsj(jCboEntrega.getSelectedIndex());
+        // produtoRsj.setCopooucasquinhaRsj(jCbocopo.getSelectedIndex());
+        //produtoRsj.setTamanhoRsj(jCbotamanho.getSelectedIndex());
         return produtoRsj;
     }
-    
-    
-    
-    
-    
-    
-    
 
     JDlgProduto() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -256,55 +252,52 @@ public class JDlgProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_jtxtsaborActionPerformed
 
     private void jbtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExcluirActionPerformed
-      tools.Util.limp(jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jCboEntrega);
-        tools.Util.habilitar(false,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jBtnComfirmar,jBtnCancelar,jbtnExcluir, jBtnAlterar, jCboEntrega);
-      tools.Util.habilitar(true, jBtnpesquisar,jBtnIncluir);
-       
-      tools.Util.perguntar(null);
+        tools.Util.limp(jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jCboEntrega);
+        tools.Util.habilitar(false, jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jBtnComfirmar, jBtnCancelar, jbtnExcluir, jBtnAlterar, jCboEntrega);
+        tools.Util.habilitar(true, jBtnpesquisar, jBtnIncluir);
+
+        tools.Util.perguntar(null);
     }//GEN-LAST:event_jbtnExcluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-   tools.Util.habilitar(true,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jBtnComfirmar,jCboEntrega);
-   tools.Util.habilitar(false,jBtnpesquisar, jBtnIncluir, jBtnAlterar, jbtnExcluir);
-   incluindo = false;
+        tools.Util.habilitar(true, jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jBtnComfirmar, jCboEntrega);
+        tools.Util.habilitar(false, jBtnpesquisar, jBtnIncluir, jBtnAlterar, jbtnExcluir);
+        incluindo = false;
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnpesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnpesquisarActionPerformed
         JDlgProdutoPesquisa jDlgProdutoPesquisa = new JDlgProdutoPesquisa(null, true);
-        jDlgProdutoPesquisa.setTelaAnterior(this);        
+        jDlgProdutoPesquisa.setTelaAnterior(this);
         jDlgProdutoPesquisa.setVisible(true);
-        
-        
-  tools.Util.habilitar(true,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jbtnExcluir,jBtnComfirmar,jBtnCancelar,jBtnAlterar,jCboEntrega);
-  tools.Util.habilitar(false,jBtnpesquisar, jBtnComfirmar, jBtnIncluir);
+
+        tools.Util.habilitar(true, jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jbtnExcluir, jBtnComfirmar, jBtnCancelar, jBtnAlterar, jCboEntrega);
+        tools.Util.habilitar(false, jBtnpesquisar, jBtnComfirmar, jBtnIncluir);
     }//GEN-LAST:event_jBtnpesquisarActionPerformed
 
     private void jBtnComfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnComfirmarActionPerformed
         if (incluindo == true) {
-            
-        produtoDAO.insert(viewBean());
-        }else{
-        
-        produtoDAO.upedate(viewBean());
+
+            produtoDAO.insert(viewBean());
+        } else {
+
+            produtoDAO.upedate(viewBean());
         }
-       
- 
-      
+
         tools.Util.limp(jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jCboEntrega);
-      tools.Util.habilitar(false,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jBtnComfirmar,jBtnCancelar,jbtnExcluir,jCboEntrega);
-      tools.Util.habilitar(true, jBtnpesquisar,jBtnIncluir);
+        tools.Util.habilitar(false, jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jBtnComfirmar, jBtnCancelar, jbtnExcluir, jCboEntrega);
+        tools.Util.habilitar(true, jBtnpesquisar, jBtnIncluir);
     }//GEN-LAST:event_jBtnComfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-      tools.Util.limp(jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor,jCboEntrega);
-      tools.Util.habilitar(false,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jBtnComfirmar,jBtnCancelar,jbtnExcluir,jCboEntrega);
-      tools.Util.habilitar(true, jBtnpesquisar,jBtnIncluir);
+        tools.Util.limp(jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jCboEntrega);
+        tools.Util.habilitar(false, jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jBtnComfirmar, jBtnCancelar, jbtnExcluir, jCboEntrega);
+        tools.Util.habilitar(true, jBtnpesquisar, jBtnIncluir);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
-    tools.Util.habilitar(true,jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jBtnComfirmar, jBtnCancelar,jCboEntrega);
-    tools.Util.habilitar(false, jBtnpesquisar, jBtnIncluir);
-    incluindo = true;
+        tools.Util.habilitar(true, jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jBtnComfirmar, jBtnCancelar, jCboEntrega);
+        tools.Util.habilitar(false, jBtnpesquisar, jBtnIncluir);
+        incluindo = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jCbocopoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbocopoActionPerformed

@@ -9,11 +9,12 @@ import bean.ProdutoRsj;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+
 /**
  *
  * @author User
  */
-public class ProdutoDAO extends DAO_Abstract{
+public class ProdutoDAO extends DAO_Abstract {
 
     @Override
     public void insert(Object object) {
@@ -42,7 +43,7 @@ public class ProdutoDAO extends DAO_Abstract{
 
     @Override
     public Object list(int id) {
-                session.beginTransaction();
+        session.beginTransaction();
         Criteria criteria = session.createCriteria(ProdutoRsj.class);
         criteria.add(Restrictions.eq("idprodutoRsj", id));
         List lista = criteria.list();
@@ -52,31 +53,42 @@ public class ProdutoDAO extends DAO_Abstract{
 
     @Override
     public List listAll() {
-                session.beginTransaction();
+        session.beginTransaction();
         Criteria criteria = session.createCriteria(ProdutoRsj.class);
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista;
     }
-    public List listNome(String sabor){
+
+    public List listNome(String sabor) {
         session.beginTransaction();
-       Criteria criteria = session.createCriteria(ProdutoRsj.class);
+        Criteria criteria = session.createCriteria(ProdutoRsj.class);
         criteria.add(Restrictions.like("saborRsj", "%" + sabor + "%"));
         List lista = criteria.list();
         session.getTransaction().commit();
-    return lista;
-   
-    
-    } 
-    public List listFuncao(String entrega){
+        return lista;
+
+    }
+
+    public List listEntregaRsj(int entrega) {
         session.beginTransaction();
-       Criteria criteria = session.createCriteria(ProdutoRsj.class);
-        criteria.add(Restrictions.like("entregaRsj", "%" + entrega + "%"));
+        Criteria criteria = session.createCriteria(ProdutoRsj.class);
+        criteria.add(Restrictions.eq("entregaRsj", entrega));
         List lista = criteria.list();
         session.getTransaction().commit();
-    return lista;
-   
-    
-    } 
-    
+        return lista;
+
+    }
+
+    public List listNomeEntrega(String nome, int entrega) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(ProdutoRsj.class);
+        criteria.add(Restrictions.like("nomeRsj", "%" + nome + "%"));
+        criteria.add(Restrictions.eq("entregaRsj", entrega));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+
+    }
+
 }
