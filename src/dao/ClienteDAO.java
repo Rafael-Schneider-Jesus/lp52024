@@ -60,14 +60,7 @@ public class ClienteDAO extends DAO_Abstract {
         return lista;
     }
 
-    public List listValor(double valor) {
-        session.beginTransaction();
-        Criteria criteria = session.createCriteria(ClienteRsj.class);
-        criteria.add(Restrictions.le("rendaanualRsj", valor));
-        List lista = criteria.list();
-        session.getTransaction().commit();
-        return lista;
-    }
+   
 
     public List listNome(String nome) {
         session.beginTransaction();
@@ -79,15 +72,26 @@ public class ClienteDAO extends DAO_Abstract {
 
     }
 
-    public List listValorQuant(String nome, double valor) {
+        public List listNomeCep(String nome, String cep){
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(ClienteRsj.class);
-        criteria.add(Restrictions.le("nomeRsj", nome));
-        criteria.add(Restrictions.le("rendaanualRsj", valor));
+       Criteria criteria = session.createCriteria(ClienteRsj.class);
+        criteria.add(Restrictions.like("nomeRsj", "%" + nome + "%"));
+        criteria.add(Restrictions.like("cepRsj", "%" + cep + "%"));
         List lista = criteria.list();
         session.getTransaction().commit();
-        return lista;
-
-    }
+    return lista;
+   
+    
+    }    
+    public List listCep(String cep){
+        session.beginTransaction();
+       Criteria criteria = session.createCriteria(ClienteRsj.class);
+        criteria.add(Restrictions.like("cepRsj", "%" + cep + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+    return lista;
+   
+    
+    }  
 
 }

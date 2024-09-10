@@ -35,7 +35,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="jTxtRendaanual" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="jTxtCep" min="-2" pref="100" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="JBtnConsulta" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -54,7 +54,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jTxtNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTxtRendaanual" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTxtCep" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="JBtnConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="17" max="32767" attributes="0"/>
@@ -115,12 +115,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Renda Anual"/>
+        <Property name="text" type="java.lang.String" value="Cep"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtNome">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTxtRendaanual">
+    <Component class="javax.swing.JTextField" name="jTxtCep">
     </Component>
     <Component class="javax.swing.JButton" name="JBtnConsulta">
       <Properties>

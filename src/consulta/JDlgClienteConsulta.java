@@ -4,12 +4,16 @@
  */
 package consulta;
 
+import dao.ClienteDAO;
+import java.util.List;
+import viewControle.ClienteControle;
+
 /**
  *
  * @author User
  */
 public class JDlgClienteConsulta extends javax.swing.JDialog {
-
+ClienteControle clienteControle;
     /**
      * Creates new form JDlgClienteConsulta
      */
@@ -34,7 +38,7 @@ public class JDlgClienteConsulta extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTxtNome = new javax.swing.JTextField();
-        jTxtRendaanual = new javax.swing.JTextField();
+        jTxtCep = new javax.swing.JTextField();
         JBtnConsulta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -64,7 +68,7 @@ public class JDlgClienteConsulta extends javax.swing.JDialog {
 
         jLabel1.setText("Nome");
 
-        jLabel2.setText("Renda Anual");
+        jLabel2.setText("Cep");
 
         JBtnConsulta.setText("Consulta");
         JBtnConsulta.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +92,7 @@ public class JDlgClienteConsulta extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTxtRendaanual, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTxtCep, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38)
                         .addComponent(JBtnConsulta)))
                 .addContainerGap(40, Short.MAX_VALUE))
@@ -102,7 +106,7 @@ public class JDlgClienteConsulta extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTxtRendaanual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTxtCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JBtnConsulta))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -118,7 +122,28 @@ public class JDlgClienteConsulta extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void JBtnConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtnConsultaActionPerformed
-
+       clienteControle = new ClienteControle();
+       ClienteDAO clienteDAO = new ClienteDAO();
+        
+       if(jTxtNome.getText().equals("") && jTxtCep.getText().equals("")){
+                    
+         List lista =  clienteDAO.listAll();
+         clienteControle.setList(lista);
+        }else if(!jTxtNome.getText().equals("") && jTxtCep.getText().equals("")){
+                
+         List lista =  clienteDAO.listNome(jTxtNome.getText());
+         clienteControle.setList(lista);
+        }else if(!jTxtNome.getText().equals("") && !jTxtCep.getText().equals("")){
+                       
+         List lista =  clienteDAO.listNomeCep(jTxtNome.getText(), jTxtCep.getText());
+         clienteControle.setList(lista);
+        }else if(jTxtNome.getText().equals("") && !jTxtCep.getText().equals("")){
+                       
+         List lista =  clienteDAO.listCep( jTxtCep.getText());
+         clienteControle.setList(lista);
+        }
+        
+        jTable1.setModel(clienteControle);
     }//GEN-LAST:event_JBtnConsultaActionPerformed
 
     /**
@@ -171,7 +196,7 @@ public class JDlgClienteConsulta extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTxtCep;
     private javax.swing.JTextField jTxtNome;
-    private javax.swing.JTextField jTxtRendaanual;
     // End of variables declaration//GEN-END:variables
 }

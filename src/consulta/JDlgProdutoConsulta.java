@@ -133,7 +133,27 @@ public class JDlgProdutoConsulta extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void JBtnConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtnConsultaActionPerformed
+ produtoControle = new ProdutoControle();
+        ProdutoDAO produtoDAO = new ProdutoDAO();
 
+        if (jTxtSabor.getText().equals("") && jCboEntrega.getSelectedIndex() == 4) {
+            List lista = produtoDAO.listAll();
+            produtoControle.setList(lista);
+            jTable1.setModel(produtoControle);
+
+        } else if (!jTxtSabor.getText().equals("") && jCboEntrega.getSelectedIndex() < 4) {
+            List lista = produtoDAO.listNomeEntrega(jTxtSabor.getText(), jCboEntrega.getSelectedIndex());
+            produtoControle.setList(lista);
+            jTable1.setModel(produtoControle);
+        } else if (!jTxtSabor.getText().equals("") && jCboEntrega.getSelectedIndex() == 4) {
+            List lista = produtoDAO.listNome(jTxtSabor.getText());
+            produtoControle.setList(lista);
+            jTable1.setModel(produtoControle);
+        } else {
+            List lista = produtoDAO.listEntregaRsj(jCboEntrega.getSelectedIndex());
+            produtoControle.setList(lista);
+            jTable1.setModel(produtoControle);
+        }
     }//GEN-LAST:event_JBtnConsultaActionPerformed
 
     private void jTxtSaborActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtSaborActionPerformed
