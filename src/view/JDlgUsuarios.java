@@ -39,9 +39,9 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         jTxtApelido.setText(usuarioRsj.getApelidoRsj());
         jTxtNome.setText(usuarioRsj.getNomeRsj());
         jFmtCpf.setText(usuarioRsj.getCpfRsj());
-        //  jFmtData.setText(tools.Util.dateStr(usuarioRsj.getDatanascimentoRsj()));
+        jFmtData.setText(tools.Util.dateStr(usuarioRsj.getDatanascimentoRsj()));
         jPwfSenha.setText(usuarioRsj.getSenhaRsj());
-//jCboNivel.setSelectedIndex(usuarioRsj.getNivelRsj()); Null value was assigned to a property of primitive type setter of bean.UsuarioRsj.nivelRsj
+//jCboNivel.setSelectedIndex(usuarioRsj.getNivelRsj());
         if (usuarioRsj.getAtivoRsj().equals("S")) {
             jChbAtivo.setSelected(true);
         } else {
@@ -56,8 +56,8 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         usuarioRsj.setApelidoRsj(jTxtApelido.getText());
 
         usuarioRsj.setCpfRsj(jFmtCpf.getText());
-        // usuarioRsj.setDatanascimentoRsj(tools.Util.strDate(jFmtData.getText()));
-        //  usuarioRsj.setNivelRsj(jCboNivel.getSelectedIndex()); Null value was assigned to a property of primitive type setter of bean.UsuarioRsj.nivelRsj
+         usuarioRsj.setDatanascimentoRsj(tools.Util.strDate(jFmtData.getText()));
+      //    usuarioRsj.setNivelRsj(jCboNivel.getSelectedIndex());
         usuarioRsj.setNomeRsj(jTxtNome.getText());
         usuarioRsj.setSenhaRsj(jPwfSenha.getText());
 
@@ -335,7 +335,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         tools.Util.habilitar(false, jBtnExlcuir, jBtnCancelar, jBtnAlterar, jTxtNome, jTxtApelido, jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha, jBtnConfirmar);
         tools.Util.habilitar(true, jBtnPesquisar, jBtnIncluir);
 
-        if (tools.Util.perguntar("Deseja Excluir")) {
+        if (tools.Util.pergunta("Deseja Excluir")) {
             usuariosDAO.delete(viewBean());
         }
     }//GEN-LAST:event_jBtnExlcuirActionPerformed

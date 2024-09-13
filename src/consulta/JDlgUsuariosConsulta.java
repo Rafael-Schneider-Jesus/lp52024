@@ -23,6 +23,8 @@ public class JDlgUsuariosConsulta extends javax.swing.JDialog {
     public JDlgUsuariosConsulta(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+                setTitle("Consulta Usuarios");
+        setLocationRelativeTo(null);
     }
 
     /**

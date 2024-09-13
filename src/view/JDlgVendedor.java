@@ -104,8 +104,6 @@ public class JDlgVendedor extends javax.swing.JDialog {
 
         jLabel7.setText("Senha");
 
-        jSenha.setText("jPasswordField1");
-
         jLabel8.setText("funcão");
 
         jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/alterar.png"))); // NOI18N
@@ -271,7 +269,7 @@ public class JDlgVendedor extends javax.swing.JDialog {
     private void jbtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExcluirActionPerformed
         tools.Util.limp(jTelefone, jTxtCodigo, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao);
         tools.Util.habilitar(false, jTelefone, jTxtCodigo, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao, jBtnComfirmar, jBtnCancelar, jbtnExcluir, jBtnAlterar);
-        tools.Util.perguntar(null);
+        tools.Util.pergunta(null);
         tools.Util.habilitar(true, jBtnpesquisar, jBtnIncluir);
     }//GEN-LAST:event_jbtnExcluirActionPerformed
 

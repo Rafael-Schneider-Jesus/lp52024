@@ -116,11 +116,21 @@ public class JDlgUsuariosPesquisa extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-        if (jTable1.getSelectedRow() == -1) {
-            tools.Util.msg("Nenhuma registro selecionado.");
-        } else {
-            int sel = jTable1.getSelectedRow();
-            jDlgUsuarios.beanView(usuariosControle.getUsuarioRsj(sel));
+// int rowsel = jTable1.getSelectedRow();
+//       
+//       UsuarioRsj usuarios = usuariosControle.getUsuarioRsj(rowsel);
+//       jDlgUsuarios.beanView(usuarios);
+       
+      
+       
+       
+       
+        setVisible(false);
+    if (jTable1.getSelectedRow() == -1) {
+          tools.Util.msg("Nenhuma registro selecionado.");
+      } else {
+           int sel = jTable1.getSelectedRow();
+         jDlgUsuarios.beanView(usuariosControle.getUsuarioRsj(sel));
             setVisible(false);
         }
     }//GEN-LAST:event_jBtnOkActionPerformed

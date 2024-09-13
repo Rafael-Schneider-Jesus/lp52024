@@ -4,7 +4,7 @@
  */
 package viewPesquisa;
 
-import viewVendaPro.JDlgVenda;
+import viewVendaPro.JDLgVendas;
 import viewControle.VendaControle;
 import dao.VendaDAO;
 import java.util.List;
@@ -16,7 +16,7 @@ import bean.VendaRsj;
  */
 public class JDlgVendaPesquisa extends javax.swing.JDialog {
 
-    private JDlgVenda jDlgVenda;
+    private JDLgVendas jDlgVenda;
     VendaRsj vendaRsj;
     VendaDAO vendaDAO;
     VendaControle vendaControle;
@@ -42,7 +42,7 @@ public class JDlgVendaPesquisa extends javax.swing.JDialog {
 
     }
 
-    public void setTelaAnterior(JDlgVenda jDlgVenda) {
+    public void setTelaAnterior(JDLgVendas jDlgVenda) {
         this.jDlgVenda = jDlgVenda;
     }
 

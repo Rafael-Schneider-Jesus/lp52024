@@ -32,18 +32,18 @@ public class JDlgProduto extends javax.swing.JDialog {
     public void beanView(ProdutoRsj produtoRsj) {
         jtxtCodigo.setText(tools.Util.intStr(produtoRsj.getIdprodutoRsj()));
         jtxtsabor.setText(produtoRsj.getSaborRsj());
-        // jCboEntrega.setSelectedIndex(produtoRsj.getEntregaRsj());
-        //jCbocopo.setSelectedIndex(produtoRsj.getCopooucasquinhaRsj());
-        //jCbotamanho.setSelectedIndex(produtoRsj.getTamanhoRsj());
+         jCboEntrega.setSelectedIndex(tools.Util.strInt(produtoRsj.getEntregaRsj()));
+        jCbocopo.setSelectedIndex(tools.Util.strInt(produtoRsj.getCopooucasquinhaRsj()));
+        jCbotamanho.setSelectedIndex(tools.Util.strInt(produtoRsj.getTamanhoRsj()));
     }
 
     public ProdutoRsj viewBean() {
         ProdutoRsj produtoRsj = new ProdutoRsj();
         produtoRsj.setIdprodutoRsj(tools.Util.strInt(jtxtCodigo.getText()));
         produtoRsj.setSaborRsj(jtxtsabor.getText());
-        // produtoRsj.setEntregaRsj(jCboEntrega.getSelectedIndex());
-        // produtoRsj.setCopooucasquinhaRsj(jCbocopo.getSelectedIndex());
-        //produtoRsj.setTamanhoRsj(jCbotamanho.getSelectedIndex());
+        produtoRsj.setEntregaRsj(tools.Util.intStr(jCboEntrega.getSelectedIndex()));
+        produtoRsj.setCopooucasquinhaRsj(tools.Util.intStr(jCbocopo.getSelectedIndex()));
+        produtoRsj.setTamanhoRsj(tools.Util.intStr(jCbotamanho.getSelectedIndex()));
         return produtoRsj;
     }
 
@@ -256,7 +256,7 @@ public class JDlgProduto extends javax.swing.JDialog {
         tools.Util.habilitar(false, jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jBtnComfirmar, jBtnCancelar, jbtnExcluir, jBtnAlterar, jCboEntrega);
         tools.Util.habilitar(true, jBtnpesquisar, jBtnIncluir);
 
-        tools.Util.perguntar(null);
+        tools.Util.pergunta(null);
     }//GEN-LAST:event_jbtnExcluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed

@@ -20,6 +20,8 @@ ClienteControle clienteControle;
     public JDlgClienteConsulta(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+                setTitle("Consulta Cliente");
+        setLocationRelativeTo(null);
     }
 
     /**

@@ -4,7 +4,8 @@ import consulta.JDlgClienteConsulta;
 import consulta.JDlgProdutoConsulta;
 import consulta.JDlgUsuariosConsulta;
 import consulta.JDlgVendedorConsulta;
-import viewVendaPro.JDlgVenda;
+import viewVendaPro.JDLgVendas;
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -232,7 +233,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jSairActionPerformed
 
     private void jVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVendaActionPerformed
-        JDlgVenda jDlgVendass = new JDlgVenda(this, true);
+        JDLgVendas jDlgVendass = new JDLgVendas(this, true);
         jDlgVendass.setVisible(true);
     }//GEN-LAST:event_jVendaActionPerformed
 

@@ -41,10 +41,10 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="db_rafael_jesus"/>
-  <table-filter match-name="produto_rsj"/>
   <table-filter match-name="usuario_rsj"/>
+  <table-filter match-name="cliente_rsj"/>
+  <table-filter match-name="produto_rsj"/>
   <table-filter match-name="vendaproduto_rsj"/>
   <table-filter match-name="venda_rsj"/>
   <table-filter match-name="vendedor_rsj"/>
-  <table-filter match-name="cliente_rsj"/>
 </hibernate-reverse-engineering>

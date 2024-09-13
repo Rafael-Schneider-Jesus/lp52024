@@ -6,12 +6,22 @@
 package viewVendaPro;
 
 import bean.ProdutoRsj;
+import bean.VendaRsj;
+import bean.VendaprodutoRsj;
+import dao.ProdutoDAO;
+import dao.VendaDAO;
+import dao.VendaprodutoDAO;
+import java.util.List;
+import viewControle.VendaControle;
 
 /**
  *
  * @author User
  */
 public class JDlgVendaPedio extends javax.swing.JDialog {
+JDLgVendas  jDlgVenda;
+ProdutoRsj produtoRsj;
+VendaControle vendaControle;
 
     /**
      * Creates new form JDlgVendaPedio
@@ -20,6 +30,48 @@ public class JDlgVendaPedio extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         tools.Util.habilitar(false, jTxtTotal, jTxtvalorunitarioRsj);
+        
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        List lista = produtoDAO.listAll();
+        for (int i = 0; i < lista.size(); i++) {
+           jCboProdutoRsj.addItem((ProdutoRsj) lista.get(i)); }
+    }
+     public void setTelaAnterior(JDLgVendas jDlgVenda) {
+        this.jDlgVenda = jDlgVenda;
+        
+    }
+    public VendaprodutoRsj viewBean(){
+    return null;
+//                 VendaRsj Ven = new VendaRsj();    
+//
+//                 VendaDAO vdao = new VendaDAO();    
+//                  
+//        
+//        // Ven.set(tools.Util.strDouble(jTxtvalorunitarioRsj.getText()) );
+//        //Ven.set(tools.Util.strInt(jTxtQuantidadeRsj.getText()) );      
+// //            Ven.setProduto((ProdutoRsj) jCboProdutoRsj.getSelectedItem());
+////             Ven.setVenda((VendaRsj) vdao.busca(tools.Util.strInt(jDlgVenda.getIdVenda())));
+////
+//      
+//        
+//
+//     
+////        
+//      return Ven;
+//        
+   }
+
+     public VendaprodutoRsj beanviaw(VendaprodutoRsj Ven) {
+        //string\/
+        jTxtvalorunitarioRsj.setText(tools.Util.doubleStr(Ven.getValorunitarioRsj()) );
+        jTxtQuantidadeRsj.setText(tools.Util.intStr(Ven.getQuantidadeRsj()) );
+         jCboProdutoRsj.setSelectedItem(Ven.getProdutoRsj());
+
+
+        
+
+        return Ven;
+
     }
 
     /**
@@ -55,6 +107,11 @@ public class JDlgVendaPedio extends javax.swing.JDialog {
         jPanel2.add(JBtnCancelar);
 
         jBtnOk.setText("OK");
+        jBtnOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnOkActionPerformed(evt);
+            }
+        });
         jPanel2.add(jBtnOk);
 
         jTxtvalorunitarioRsj.addActionListener(new java.awt.event.ActionListener() {
@@ -125,6 +182,26 @@ public class JDlgVendaPedio extends javax.swing.JDialog {
     private void jTxtvalorunitarioRsjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtvalorunitarioRsjActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtvalorunitarioRsjActionPerformed
+
+    private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
+       VendaprodutoRsj vem = viewBean();
+        VendaprodutoDAO vendaprodutoDAO = new VendaprodutoDAO();
+    
+        
+        
+         if (getTitle().toUpperCase().substring(0, 1).equals("I")) {
+             vendaprodutoDAO.insert(vem);
+       //      jDlgVenda.vendaControle.addBean(vem);
+       
+        
+             
+        } else {    
+             vendaprodutoDAO.upedate(vem);
+      //                  jDlgVenda.vendaControle.updateBean(jDlgVenda.getSelectedRowProd(), vem);
+
+        }
+        setVisible(false);
+    }//GEN-LAST:event_jBtnOkActionPerformed
 
     /**
      * @param args the command line arguments
