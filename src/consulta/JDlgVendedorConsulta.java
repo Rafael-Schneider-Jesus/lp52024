@@ -22,7 +22,7 @@ public class JDlgVendedorConsulta extends javax.swing.JDialog {
     public JDlgVendedorConsulta(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-                setTitle("Consulta Vendedor");
+        setTitle("Consulta Vendedor");
         setLocationRelativeTo(null);
     }
 
@@ -81,7 +81,7 @@ public class JDlgVendedorConsulta extends javax.swing.JDialog {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vendedor", "gerente", "estagiario" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vendedor", "gerente", "estagiario", " ", " " }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

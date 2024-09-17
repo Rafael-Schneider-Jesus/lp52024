@@ -13,14 +13,16 @@ import viewControle.ClienteControle;
  * @author User
  */
 public class JDlgClienteConsulta extends javax.swing.JDialog {
-ClienteControle clienteControle;
+
+    ClienteControle clienteControle;
+
     /**
      * Creates new form JDlgClienteConsulta
      */
     public JDlgClienteConsulta(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-                setTitle("Consulta Cliente");
+        setTitle("Consulta Cliente");
         setLocationRelativeTo(null);
     }
 
@@ -124,27 +126,27 @@ ClienteControle clienteControle;
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void JBtnConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtnConsultaActionPerformed
-       clienteControle = new ClienteControle();
-       ClienteDAO clienteDAO = new ClienteDAO();
-        
-       if(jTxtNome.getText().equals("") && jTxtCep.getText().equals("")){
-                    
-         List lista =  clienteDAO.listAll();
-         clienteControle.setList(lista);
-        }else if(!jTxtNome.getText().equals("") && jTxtCep.getText().equals("")){
-                
-         List lista =  clienteDAO.listNome(jTxtNome.getText());
-         clienteControle.setList(lista);
-        }else if(!jTxtNome.getText().equals("") && !jTxtCep.getText().equals("")){
-                       
-         List lista =  clienteDAO.listNomeCep(jTxtNome.getText(), jTxtCep.getText());
-         clienteControle.setList(lista);
-        }else if(jTxtNome.getText().equals("") && !jTxtCep.getText().equals("")){
-                       
-         List lista =  clienteDAO.listCep( jTxtCep.getText());
-         clienteControle.setList(lista);
+        clienteControle = new ClienteControle();
+        ClienteDAO clienteDAO = new ClienteDAO();
+
+        if (jTxtNome.getText().equals("") && jTxtCep.getText().equals("")) {
+
+            List lista = clienteDAO.listAll();
+            clienteControle.setList(lista);
+        } else if (!jTxtNome.getText().equals("") && jTxtCep.getText().equals("")) {
+
+            List lista = clienteDAO.listNome(jTxtNome.getText());
+            clienteControle.setList(lista);
+        } else if (!jTxtNome.getText().equals("") && !jTxtCep.getText().equals("")) {
+
+            List lista = clienteDAO.listNomeCep(jTxtNome.getText(), jTxtCep.getText());
+            clienteControle.setList(lista);
+        } else if (jTxtNome.getText().equals("") && !jTxtCep.getText().equals("")) {
+
+            List lista = clienteDAO.listCep(jTxtCep.getText());
+            clienteControle.setList(lista);
         }
-        
+
         jTable1.setModel(clienteControle);
     }//GEN-LAST:event_JBtnConsultaActionPerformed
 

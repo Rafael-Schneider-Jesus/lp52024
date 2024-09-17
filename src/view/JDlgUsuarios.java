@@ -56,8 +56,8 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         usuarioRsj.setApelidoRsj(jTxtApelido.getText());
 
         usuarioRsj.setCpfRsj(jFmtCpf.getText());
-         usuarioRsj.setDatanascimentoRsj(tools.Util.strDate(jFmtData.getText()));
-      //    usuarioRsj.setNivelRsj(jCboNivel.getSelectedIndex());
+        usuarioRsj.setDatanascimentoRsj(tools.Util.strDate(jFmtData.getText()));
+        //    usuarioRsj.setNivelRsj(jCboNivel.getSelectedIndex());
         usuarioRsj.setNomeRsj(jTxtNome.getText());
         usuarioRsj.setSenhaRsj(jPwfSenha.getText());
 

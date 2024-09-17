@@ -23,7 +23,7 @@ public class JDlgProdutoConsulta extends javax.swing.JDialog {
     public JDlgProdutoConsulta(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-                setTitle("Consulta Produto");
+        setTitle("Consulta Produto");
         setLocationRelativeTo(null);
     }
 
@@ -88,7 +88,12 @@ public class JDlgProdutoConsulta extends javax.swing.JDialog {
             }
         });
 
-        jCboEntrega.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "sim", "nao" }));
+        jCboEntrega.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "sim", "nao", " ", " " }));
+        jCboEntrega.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCboEntregaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,14 +106,16 @@ public class JDlgProdutoConsulta extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTxtSabor, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jCboEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jCboEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(JBtnConsulta)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,7 +142,7 @@ public class JDlgProdutoConsulta extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void JBtnConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtnConsultaActionPerformed
- produtoControle = new ProdutoControle();
+        produtoControle = new ProdutoControle();
         ProdutoDAO produtoDAO = new ProdutoDAO();
 
         if (jTxtSabor.getText().equals("") && jCboEntrega.getSelectedIndex() == 4) {
@@ -161,6 +168,10 @@ public class JDlgProdutoConsulta extends javax.swing.JDialog {
     private void jTxtSaborActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtSaborActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtSaborActionPerformed
+
+    private void jCboEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboEntregaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCboEntregaActionPerformed
 
     /**
      * @param args the command line arguments

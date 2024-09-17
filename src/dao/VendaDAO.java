@@ -60,4 +60,17 @@ public class VendaDAO extends DAO_Abstract {
         return lista;
     }
 
+    public Object busca(int quant) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(VendaRsj.class);
+        criteria.add(Restrictions.like("idvendaRsj", quant));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+
+        if (!lista.isEmpty()) {
+            return lista.get(0);
+        }
+        return null;
+
+    }
 }

@@ -38,18 +38,18 @@ public class VendedorControle extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        VendaprodutoRsj vendaprodutoRsj = (VendaprodutoRsj) lista.get(rowIndex);
+        VendedorRsj vendedorRsj = (VendedorRsj) lista.get(rowIndex);
         if (columnIndex == 0) {
-            return vendaprodutoRsj.getIdvendaprodutoRsj();
+            return vendedorRsj.getIdvendedorRsj();
         }
         if (columnIndex == 1) {
-            return vendaprodutoRsj.getProdutoRsj();
+            return vendedorRsj.getNomeRsj();
         }
         if (columnIndex == 2) {
-            return vendaprodutoRsj.getQuantidadeRsj();
+            return vendedorRsj.getSobrenomeRsj();
         }
         if (columnIndex == 3) {
-            return vendaprodutoRsj.getValorunitarioRsj();
+            return vendedorRsj.getFuncaoRsj();
         }
         return null;
     }
@@ -59,13 +59,13 @@ public class VendedorControle extends AbstractTableModel {
             return "Id";
         }
         if (column == 1) {
-            return "Produto";
+            return "Nome";
         }
         if (column == 2) {
-            return "Quantidade";
+            return "Sobrenome";
         }
         if (column == 3) {
-            return "Valorunitario";
+            return "Funcao";
         }
         return "";
     }

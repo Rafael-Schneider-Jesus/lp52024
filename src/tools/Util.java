@@ -43,16 +43,17 @@ public class Util {
     }
 
     public static int perguntar(String mensagem, String pergunta) {
-      return  JOptionPane.showConfirmDialog(null,  mensagem, pergunta, JOptionPane.YES_NO_OPTION);
-        
+        return JOptionPane.showConfirmDialog(null, mensagem, pergunta, JOptionPane.YES_NO_OPTION);
+
     }
-        public static boolean pergunta(String mensagem) {
+
+    public static boolean pergunta(String mensagem) {
 //       int resp = JOptionPane.showConfirmDialog(null, "Confirmar exclusão?",
 //       "Pergunta", JOptionPane.YES_NO_OPTION);
-       
-       int resp = JOptionPane.showConfirmDialog(null, "Confirmar exclusão?",
-       "Pergunta", JOptionPane.YES_NO_OPTION);
-       
+
+        int resp = JOptionPane.showConfirmDialog(null, "Confirmar exclusão?",
+                "Pergunta", JOptionPane.YES_NO_OPTION);
+
         return false;
     }
 

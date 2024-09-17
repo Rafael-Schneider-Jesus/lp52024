@@ -25,23 +25,17 @@ public class JDlgUsuariosPesquisa extends javax.swing.JDialog {
      * Creates new form JDlgUsuariosPesquisa
      */
     public JDlgUsuariosPesquisa(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+       super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        setTitle("Consulta de Usuarios");
-
+        UsuariosDAO usuariosDAO = new UsuariosDAO();
         usuariosControle = new UsuariosControle();
-        usuariosDAO = new UsuariosDAO();
-
-        List lista = usuariosDAO.listAll();
-        usuariosControle.setList(lista);
+        usuariosControle.setList( usuariosDAO.listAll() );
         jTable1.setModel(usuariosControle);
-
-        initComponents();
 
     }
 
-    public void setTelaAnterior(JDlgUsuarios jDlgUsuarios) {
+      public void setTelaAnterior(JDlgUsuarios jDlgUsuarios) {
         this.jDlgUsuarios = jDlgUsuarios;
     }
 
