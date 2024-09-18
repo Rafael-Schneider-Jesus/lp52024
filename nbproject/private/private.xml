@@ -3,9 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/viewVendaPro/JDlgVendaPedio.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/viewPesquisa/JDlgClientePesquisa.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/view/JFrmPrincipal.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/viewVendaPro/JDlgVendaProduto.java</file>
             <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/viewVendaPro/JDLgVendas.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/view/JDlgProduto.java</file>
             <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/view/JDlgcliente.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/projetoCerto/lp52024/src/consulta/JDlgClienteConsulta.java</file>
         </group>
     </open-files>
 </project-private>
