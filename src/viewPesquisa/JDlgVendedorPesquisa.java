@@ -28,18 +28,11 @@ public class JDlgVendedorPesquisa extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        setTitle("Consulta de Vendedor");
+        setTitle("Consulta");
         vendedorControle = new VendedorControle();
-        jTable1.setModel(vendedorControle);
-
-        vendedorControle = new VendedorControle();
-        vendedorRsj = new VendedorRsj();
-        vendedorDAO = new VendedorDAO();
+        VendedorDAO vendedorDAO = new VendedorDAO();
         List lista = vendedorDAO.listAll();
         vendedorControle.setList(lista);
-        jTable1.setModel(vendedorControle);
-
-        initComponents();
         jTable1.setModel(vendedorControle);
 
     }

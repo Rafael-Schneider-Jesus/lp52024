@@ -393,9 +393,9 @@ public class JDlgcliente extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnpesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnpesquisarActionPerformed
-        JDlgClientePesquisa jDlgClientePesquisa = new JDlgClientePesquisa(null, true);
-        jDlgClientePesquisa.setTelaAnterior(this);
-        jDlgClientePesquisa.setVisible(true);
+        JDlgClientePesquisa jDlgClientesPesquisar = new JDlgClientePesquisa(null, true);
+        jDlgClientesPesquisar.setTelaAnterior(this);
+        jDlgClientesPesquisar.setVisible(true);
 
         tools.Util.habilitar(true, jBtnCancelar, jBtnAlterar, jbtnExcluir);
         tools.Util.habilitar(false, jBtnpesquisar, jBtnComfirmar, jBtnIncluir, jTxtCep, jTxtCidade, jTxtEmail, jTxtId, jTxtNome, jTxtRenda, jTxtSobre, jTxtendereco, jTxtnumero, jTxtprof, jCboEstado, jCboGenero, jFmtnasc, jFmtTelefone, jFmtCadastro, jBtnComfirmar);

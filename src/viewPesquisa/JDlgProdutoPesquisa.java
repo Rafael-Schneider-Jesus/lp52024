@@ -29,14 +29,12 @@ public class JDlgProdutoPesquisa extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        setTitle("Consulta de Produto");
-
-        produtoDAO = new ProdutoDAO();
+        setTitle("Consulta");
         produtoControle = new ProdutoControle();
-        produtoControle.setList(produtoDAO.listAll());
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        List lista = produtoDAO.listAll();
+        produtoControle.setList(lista);
         jTable1.setModel(produtoControle);
-
-        initComponents();
 
     }
 

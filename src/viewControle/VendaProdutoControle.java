@@ -43,6 +43,9 @@ public class VendaProdutoControle extends AbstractTableModel {
         this.fireTableDataChanged();
 
     }
+      public VendaprodutoRsj getList(int index) {
+        return (VendaprodutoRsj) lista.get(index);
+    }
 
     @Override
     public int getRowCount() {

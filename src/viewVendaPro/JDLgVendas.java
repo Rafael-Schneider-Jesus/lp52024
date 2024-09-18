@@ -5,7 +5,6 @@
  */
 package viewVendaPro;
 
-
 import bean.ClienteRsj;
 import bean.ProdutoRsj;
 import bean.VendaRsj;
@@ -33,17 +32,20 @@ import view.JDlgUsuarios;
 import viewControle.VendaControle;
 import viewControle.VendaProdutoControle;
 import viewPesquisa.JDlgVendaPesquisa;
+
 /**
  *
  * @dell
  */
 public class JDLgVendas extends javax.swing.JDialog {
- public VendaControle vendasControle;
- VendaProdutoControle vendaProdutoControle;
-   boolean incl; 
-     MaskFormatter maskdata;
-     VendaprodutoDAO vendaAniDAO;
-     VendaprodutoRsj VenAni;
+
+    public VendaControle vendasControle;
+    VendaProdutoControle vendaProdutoControle;
+    boolean incl;
+    MaskFormatter maskdata;
+    VendaprodutoDAO vendaAniDAO;
+    VendaprodutoRsj VenAni;
+
     /**
      * Creates new form JDlgUsuarios
      */
@@ -52,72 +54,45 @@ public class JDLgVendas extends javax.swing.JDialog {
         initComponents();
         setTitle("Vendas");
         setLocationRelativeTo(null);
-        
-         
-           
-         
-        
-        tools.Util.habilitar(false, jBtnCancelar, jBtnConfirmar, jCboClientes, jCboVendedor, JTxttotaQl, jFmtData, JTxtCodigo,JTxttotalV, jButton1,jBtnAlterar1,jBtnExcluir1,jBtnAlterar, jBtnExcluir);
-        tools.Util.habilitar(true, jBtnIncluir, jBtnPesquisar,jBtnIncluir,jTable1);
-       
-        
-       ClienteDAO clienteDAO = new ClienteDAO();
+
+        tools.Util.habilitar(false, jBtnCancelar, jBtnConfirmar, jCboClientes, jCboVendedor, JTxttotaQl, jFmtData, JTxtCodigo, JTxttotalV, jButton1, jBtnAlterar1, jBtnExcluir1, jBtnAlterar, jBtnExcluir);
+        tools.Util.habilitar(true, jBtnIncluir, jBtnPesquisar, jBtnIncluir, jTable1);
+
+        ClienteDAO clienteDAO = new ClienteDAO();
         List lista = clienteDAO.listAll();
         for (int i = 0; i < lista.size(); i++) {
-           jCboClientes.addItem((ClienteRsj) lista.get(i)); 
-           
-           VendedorDAO funcionarioDAO = new VendedorDAO();
-        List listaa = funcionarioDAO.listAll();
-        for (int j = 0; j < listaa.size(); j++) {
-           jCboVendedor.addItem((VendedorRsj) listaa.get(i)); 
-           
-    }
-    
-    }
-    try {
+            jCboClientes.addItem((ClienteRsj) lista.get(i));
+
+            VendedorDAO funcionarioDAO = new VendedorDAO();
+            List listaa = funcionarioDAO.listAll();
+            for (int j = 0; j < listaa.size(); j++) {
+                jCboVendedor.addItem((VendedorRsj) listaa.get(i));
+
+            }
+
+        }
+        try {
             maskdata = new MaskFormatter("##/##/####");
         } catch (ParseException ex) {
             Logger.getLogger(JDlgUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
         jFmtData.setFormatterFactory(new DefaultFormatterFactory(maskdata));
     }
-    
-      public int getSelectedRowProd() {
-        return jTable1.getSelectedRow();
-    }
-      public JTable getjTable1() {
-        return jTable1;
-    }
-    public String getIdVendas() {
-        return JTxtCodigo.getText();
-    }
-   
-    public String getQ() {
-        return JTxttotaQl.getText();
-    }
-    public String getV() {
-        return JTxttotalV.getText();
-    }
-    
-      public VendaRsj beanviaw(VendaRsj vendas){
-      
-       
-       JTxtCodigo.setText(tools.Util.intStr(vendas.getIdvendaRsj()));
-         //string\/
-       
-         //JTxttotalV.setText(Util.intStr((int) vendas.getValorTotal()));
-         //JTxttotaQl.setText(Util.intStr( vendas.ge()));
-           
-       //             jCboClientes.setSelectedItem(vendas.getClienteRsj());
 
-             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-//        
-      jFmtData.setText(formato.format(vendas.getDatavendaRsj()));
+    
+    public VendaRsj beanviaw(VendaRsj vendas) {
+
+        JTxtCodigo.setText(tools.Util.intStr(vendas.getIdvendaRsj()));
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        jFmtData.setText(formato.format(vendas.getDatavendaRsj()));
+        jCboVendedor.setSelectedItem(vendas.getVendedorRsj());
+          jCboClientes.setSelectedItem(vendas.getClienteRsj());
          
+
         return vendas;
     }
-      
-         public void addProduto(ProdutoRsj produtoRsj, int quantidade, double valorUnitario) {
+
+    public void addProduto(ProdutoRsj produtoRsj, int quantidade, double valorUnitario) {
         VendaprodutoRsj vendaprodutoRsj = new VendaprodutoRsj();
         vendaProdutoControle = new VendaProdutoControle();
         vendaprodutoRsj.setProdutoRsj(produtoRsj);
@@ -125,21 +100,22 @@ public class JDLgVendas extends javax.swing.JDialog {
         vendaprodutoRsj.setValorunitarioRsj(valorUnitario);
         vendaProdutoControle.addList(vendaprodutoRsj);
     }
-      
- public  VendaRsj viawbean(){
-     vendaAniDAO = new VendaprodutoDAO();
-     
-     VendaDAO vDAO = new VendaDAO();
-      VendaRsj vendas = new VendaRsj();
-       
-      
-      vendas.setIdvendaRsj(tools.Util.strInt(JTxtCodigo.getText()));  
-      vendas.setClienteRsj((ClienteRsj) jCboClientes.getSelectedItem());
-      vendas.setVendedorRsj((VendedorRsj) jCboVendedor.getSelectedItem());
-           vendas.setDatavendaRsj(Util.strDate(jFmtData.getText()));
-      return vendas;
- } 
-   
+
+    public VendaRsj viawbean() {
+        vendaAniDAO = new VendaprodutoDAO();
+
+        VendaDAO vDAO = new VendaDAO();
+        VendaRsj vendas = new VendaRsj();
+
+        vendas.setIdvendaRsj(tools.Util.strInt(JTxtCodigo.getText()));
+        vendas.setClienteRsj((ClienteRsj) jCboClientes.getSelectedItem());
+        vendas.setVendedorRsj((VendedorRsj) jCboVendedor.getSelectedItem());
+        vendas.setDatavendaRsj(Util.strDate(jFmtData.getText()));
+        return vendas;
+    }
+       public int getSelectedRowProd() {
+        return jTable1.getSelectedRow();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -427,71 +403,68 @@ public class JDLgVendas extends javax.swing.JDialog {
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
-       incl =  true; 
-         
-        
-        
-         Util.habilitar(true, jBtnCancelar, jBtnConfirmar, jBtnIncluir, jBtnAlterar1,jTable1, jBtnExcluir1, jCboClientes, jCboVendedor, jFmtData, JTxtCodigo,jButton1);
+        incl = true;
+
+        Util.habilitar(true, jBtnCancelar, jBtnConfirmar, jBtnIncluir, jBtnAlterar1, jTable1, jBtnExcluir1, jCboClientes, jCboVendedor, jFmtData, JTxtCodigo, jButton1);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         Util.limp(jCboClientes, jCboVendedor, jFmtData, JTxtCodigo);
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
-           Util.habilitar(true, jBtnCancelar, jBtnConfirmar, jBtnIncluir, jBtnAlterar1,jTable1, jBtnExcluir1, jCboClientes, jCboVendedor, jFmtData, JTxtCodigo);
+        Util.habilitar(true, jBtnCancelar, jBtnConfirmar, jBtnIncluir, jBtnAlterar1, jTable1, jBtnExcluir1, jCboClientes, jCboVendedor, jFmtData, JTxtCodigo);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-      
-         incl = false;
+
+        incl = false;
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-     if( Util.perguntar("Excluir", "Deseja excluir?") == YES_NO_OPTION){
-             VendaRsj vendas = viawbean();
-        VendaDAO vendasDAO = new VendaDAO();
-        vendasDAO.delete(vendas);
-       Util.msg("Exclusão efetuada");
-      }else{
-           Util.msg("Exclusão cancela");
-         
-          
-       }
-       
+        if (Util.perguntar("Excluir", "Deseja excluir?") == YES_NO_OPTION) {
+            VendaRsj vendas = viawbean();
+            VendaDAO vendasDAO = new VendaDAO();
+            vendasDAO.delete(vendas);
+            Util.msg("Exclusão efetuada");
+        } else {
+            Util.msg("Exclusão cancela");
+
+        }
+
         Util.limp(jCboClientes, jCboVendedor, jFmtData, JTxtCodigo);
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
-      if (incl ==true) {
-                 VendaRsj vendas = viawbean();
-        VendaDAO vendasDAO = new VendaDAO();
-        vendasDAO.insert(vendas);
-            Util.habilitar(false, jBtnCancelar, jBtnConfirmar, jBtnIncluir, jBtnAlterar1,jTable1, jBtnExcluir1, jCboClientes, jCboVendedor, jFmtData, JTxtCodigo);
-        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-        Util.limp(jCboClientes, jCboVendedor, jFmtData, JTxtCodigo);
-        }else{ 
-                 VendaRsj vendas = viawbean();
-        VendaDAO vendasDAO = new VendaDAO();
-        vendasDAO.upedate(vendas);
-                  Util.habilitar(false, jBtnCancelar, jBtnConfirmar, jBtnIncluir, jBtnAlterar1,jTable1, jBtnExcluir1, jCboClientes, jCboVendedor, jFmtData, JTxtCodigo);
-        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-        Util.limp(jCboClientes, jCboVendedor, jFmtData, JTxtCodigo);
-          }
+        if (incl == true) {
+            VendaRsj vendas = viawbean();
+            VendaDAO vendasDAO = new VendaDAO();
+            vendasDAO.insert(vendas);
+            Util.habilitar(false, jBtnCancelar, jBtnConfirmar, jBtnIncluir, jBtnAlterar1, jTable1, jBtnExcluir1, jCboClientes, jCboVendedor, jFmtData, JTxtCodigo);
+            Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+            Util.limp(jCboClientes, jCboVendedor, jFmtData, JTxtCodigo);
+        } else {
+            VendaRsj vendas = viawbean();
+            VendaDAO vendasDAO = new VendaDAO();
+            vendasDAO.upedate(vendas);
+            Util.habilitar(false, jBtnCancelar, jBtnConfirmar, jBtnIncluir, jBtnAlterar1, jTable1, jBtnExcluir1, jCboClientes, jCboVendedor, jFmtData, JTxtCodigo);
+            Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+            Util.limp(jCboClientes, jCboVendedor, jFmtData, JTxtCodigo);
+        }
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:    
-         Util.habilitar(false, jBtnCancelar, jBtnConfirmar, jBtnIncluir, jBtnAlterar1,jTable1, jBtnExcluir1, jCboClientes, jCboVendedor, jFmtData, JTxtCodigo);
+        Util.habilitar(false, jBtnCancelar, jBtnConfirmar, jBtnIncluir, jBtnAlterar1, jTable1, jBtnExcluir1, jCboClientes, jCboVendedor, jFmtData, JTxtCodigo);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         Util.limp(jCboClientes, jCboVendedor, jFmtData, JTxtCodigo);
-         Util.msg("Operação cancelada");
-       
+        Util.msg("Operação cancelada");
+
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
-       JDlgVendaPesquisa jDLgVenda_pesquisar = new JDlgVendaPesquisa(null, true);
-          jDLgVenda_pesquisar.setTelaAnterior(this);
+        JDlgVendaPesquisa jDLgVenda_pesquisar = new JDlgVendaPesquisa(null, true);
+        jDLgVenda_pesquisar.setTelaAnterior(this);
         jDLgVenda_pesquisar.setVisible(true);
-        
+
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void JTxtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTxtCodigoActionPerformed
@@ -516,32 +489,31 @@ public class JDLgVendas extends javax.swing.JDialog {
 
     private void jBtnAlterar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterar1ActionPerformed
 
-        if( Util.perguntar("deseja alterar?", "Pergunta")== JOptionPane.YES_OPTION){
-        JDlgVendaProduto jDlgVendaProduto = new JDlgVendaProduto(null, true);
-        jDlgVendaProduto.setTitle("Alteração de produtos");
-        jDlgVendaProduto.setTelaAnterior(this);
-        int linSel = jTable1.getSelectedRow();
-    //    VenAni = (VendaprodutoRsj) vendasControle.getbean(linSel);
-      //  jDlgVendaProduto.beanviaw(VenAni);
-        jDlgVendaProduto.setVisible(true);
+        if (Util.perguntar("deseja alterar?", "Pergunta") == JOptionPane.YES_OPTION) {
+            JDlgVendaProduto jDlgVendaProduto = new JDlgVendaProduto(null, true);
+            jDlgVendaProduto.setTitle("Alteração de produtos");
+            jDlgVendaProduto.setTelaAnterior(this);
+            int linSel = jTable1.getSelectedRow();
+         //       VenAni = (VendaprodutoRsj) vendasControle.getbean(linSel);
+        //      jDlgVendaProduto.beanviaw(VenAni);
+            jDlgVendaProduto.setVisible(true);
          }else{Util.msg("Alteração cancelada");}     }//GEN-LAST:event_jBtnAlterar1ActionPerformed
 
     private void jBtnExcluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluir1ActionPerformed
- if( Util.perguntar("deseja escluir?", "Pergunta")== JOptionPane.YES_OPTION){
-             int rowsel = jTable1.getSelectedRow();
-       
-      // VenAni = vendasControle.getbean(rowsel);       
-         vendaAniDAO = new VendaprodutoDAO();
-        vendaAniDAO.delete(vendasControle);
-        
-        
-         vendaAniDAO = new VendaprodutoDAO();
-        List lista = vendaAniDAO.listAll();       
-       vendasControle.setList(lista);
-        jTable1.setModel(vendasControle);
-        
-       Util.msg("Exclusão efetuada");   
-      
+        if (Util.perguntar("deseja escluir?", "Pergunta") == JOptionPane.YES_OPTION) {
+            int rowsel = jTable1.getSelectedRow();
+
+            // VenAni = vendasControle.getbean(rowsel);       
+            vendaAniDAO = new VendaprodutoDAO();
+            vendaAniDAO.delete(vendasControle);
+
+            vendaAniDAO = new VendaprodutoDAO();
+            List lista = vendaAniDAO.listAll();
+            vendasControle.setList(lista);
+            jTable1.setModel(vendasControle);
+
+            Util.msg("Exclusão efetuada");
+
         } else{Util.msg("Exclusão cancelada"); }     }//GEN-LAST:event_jBtnExcluir1ActionPerformed
 
     private void JTxttotalVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTxttotalVActionPerformed
@@ -549,10 +521,10 @@ public class JDLgVendas extends javax.swing.JDialog {
     }//GEN-LAST:event_JTxttotalVActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      JDlgVendaProduto jDlgVendaPedio = new JDlgVendaProduto(null, true);
+        JDlgVendaProduto jDlgVendaPedio = new JDlgVendaProduto(null, true);
         jDlgVendaPedio.setTitle("Incluir");
-       jDlgVendaPedio.setTelaAnterior(this);
-        jDlgVendaPedio.setVisible(true); 
+        jDlgVendaPedio.setTelaAnterior(this);
+        jDlgVendaPedio.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -581,7 +553,7 @@ public class JDLgVendas extends javax.swing.JDialog {
             java.util.logging.Logger.getLogger(JDLgVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-   
+
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {

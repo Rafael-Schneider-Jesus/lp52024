@@ -86,11 +86,5 @@ public class VendaControle extends AbstractTableModel {
         return null;
     }
 
-    public void addBean(VendaprodutoRsj vemAni) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void updateBean(int selectedRowProd, VendaprodutoRsj vemAni) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }

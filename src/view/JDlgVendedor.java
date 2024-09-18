@@ -284,7 +284,7 @@ public class JDlgVendedor extends javax.swing.JDialog {
         jDlgVendedorPesquisa.setTelaAnterior(this);
         jDlgVendedorPesquisa.setVisible(true);
 
-        tools.Util.habilitar(true, jTelefone, jTxtCodigo, jTxtNome, jTxtSobre, jCpf, jDataNa, jSenha, jcboFuncao, jbtnExcluir, jBtnComfirmar, jBtnCancelar, jBtnAlterar);
+        tools.Util.habilitar(true,jbtnExcluir, jBtnComfirmar, jBtnCancelar, jBtnAlterar);
         tools.Util.habilitar(false, jBtnpesquisar, jBtnComfirmar, jBtnIncluir);
     }//GEN-LAST:event_jBtnpesquisarActionPerformed
 

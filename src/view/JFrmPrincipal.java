@@ -51,7 +51,10 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jVenda = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jConUsuarios = new javax.swing.JMenuItem();
+        jConVendedor = new javax.swing.JRadioButtonMenuItem();
+        jConCliente = new javax.swing.JMenuItem();
+        jConProduto = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -119,6 +122,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMenu1.setMnemonic('p');
         jMenu1.setText("Cadastros");
 
+        jProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.SHIFT_MASK));
         jProduto.setText("Produto");
         jProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,6 +131,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jProduto);
 
+        jUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.SHIFT_MASK));
         jUsuarios.setText("Usuarios");
         jUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +140,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jUsuarios);
 
+        jVendedor.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.SHIFT_MASK));
         jVendedor.setText("Vendedor");
         jVendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,6 +149,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jVendedor);
 
+        jCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK));
         jCliente.setText("Cliente");
         jCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,6 +158,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jCliente);
 
+        jSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.SHIFT_MASK));
         jSair.setText("sair");
         jSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,6 +171,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
 
         jMenu2.setText("Movimentos");
 
+        jVenda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.SHIFT_MASK));
         jVenda.setText("venda");
         jVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,15 +183,48 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Consultas");
-
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setText("Usuarios");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenu3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenu3ActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem1);
+
+        jConUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        jConUsuarios.setText("Usuarios");
+        jConUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jConUsuariosActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jConUsuarios);
+
+        jConVendedor.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
+        jConVendedor.setSelected(true);
+        jConVendedor.setText("Vendedor");
+        jConVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jConVendedorActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jConVendedor);
+
+        jConCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        jConCliente.setText("Cliente");
+        jConCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jConClienteActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jConCliente);
+
+        jConProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jConProduto.setText("Produto");
+        jConProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jConProdutoActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jConProduto);
 
         jMenuBar1.add(jMenu3);
 
@@ -202,10 +244,11 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+    private void jConUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConUsuariosActionPerformed
+        JDlgUsuariosConsulta jDlgUsuariosConsulta = new JDlgUsuariosConsulta(this, true);
+        jDlgUsuariosConsulta.setVisible(true);
 
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jConUsuariosActionPerformed
 
     private void jProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jProdutoActionPerformed
         // TODO add your handling code here:
@@ -257,6 +300,26 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jDlgVendedorConsulta.setVisible(true);
     }//GEN-LAST:event_jbtnConVendedorActionPerformed
 
+    private void jConClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConClienteActionPerformed
+        JDlgClienteConsulta jDlgClienteConsulta = new JDlgClienteConsulta(this, true);
+        jDlgClienteConsulta.setVisible(true);
+    }//GEN-LAST:event_jConClienteActionPerformed
+
+    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+        JDlgUsuariosConsulta jDlgUsuariosConsulta = new JDlgUsuariosConsulta(this, true);
+        jDlgUsuariosConsulta.setVisible(true);
+    }//GEN-LAST:event_jMenu3ActionPerformed
+
+    private void jConVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConVendedorActionPerformed
+        JDlgVendedorConsulta jDlgVendedorConsulta = new JDlgVendedorConsulta(this, true);
+        jDlgVendedorConsulta.setVisible(true);
+    }//GEN-LAST:event_jConVendedorActionPerformed
+
+    private void jConProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConProdutoActionPerformed
+        JDlgProdutoConsulta jDlgProdutoConsulta = new JDlgProdutoConsulta(this, true);
+        jDlgProdutoConsulta.setVisible(true);
+    }//GEN-LAST:event_jConProdutoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -296,12 +359,15 @@ public class JFrmPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem jCliente;
+    private javax.swing.JMenuItem jConCliente;
+    private javax.swing.JMenuItem jConProduto;
+    private javax.swing.JMenuItem jConUsuarios;
+    private javax.swing.JRadioButtonMenuItem jConVendedor;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jProduto;
     private javax.swing.JMenuItem jSair;
     private javax.swing.JToolBar jToolBar1;

@@ -22,7 +22,7 @@ public class JDlgVendaProduto extends javax.swing.JDialog {
      * Creates new form JDlgVendaProduto
      */
     public JDlgVendaProduto(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+ super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Venda Produtos");
@@ -35,7 +35,7 @@ public class JDlgVendaProduto extends javax.swing.JDialog {
         }
     }
 
-    public void setTelaAnterior(JDLgVendas jDlgVenda) {
+     public void setTelaAnterior(JDLgVendas jDlgVenda) {
         this.jDlgVenda = jDlgVenda;
     }
 
@@ -152,7 +152,7 @@ public class JDlgVendaProduto extends javax.swing.JDialog {
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
        
-        ProdutoRsj produtoRsj = (ProdutoRsj) jCboProduto.getSelectedItem();
+         ProdutoRsj produtoRsj = (ProdutoRsj) jCboProduto.getSelectedItem();
         int quantidade = Integer.valueOf(jTxtQuantidade.getText());
         double valorUnitario = Double.valueOf(jTxtValorUnitario.getText());
         jDlgVenda.addProduto(produtoRsj, quantidade, valorUnitario);

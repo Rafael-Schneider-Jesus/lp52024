@@ -145,6 +145,7 @@ public class JDlgProdutoConsulta extends javax.swing.JDialog {
         produtoControle = new ProdutoControle();
         ProdutoDAO produtoDAO = new ProdutoDAO();
 
+
         if (jTxtSabor.getText().equals("") && jCboEntrega.getSelectedIndex() == 4) {
             List lista = produtoDAO.listAll();
             produtoControle.setList(lista);

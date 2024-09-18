@@ -29,25 +29,18 @@ public class JDlgClientePesquisa extends javax.swing.JDialog {
     public JDlgClientePesquisa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
         setLocationRelativeTo(null);
-        setTitle("Consulta de Produto");
-
-        jTable1.setModel(clienteControle);
-
-        clienteRsj = new ClienteRsj();
+        setTitle("Consulta");
         clienteControle = new ClienteControle();
-        clienteDAO = new ClienteDAO();
+        ClienteDAO clienteDAO = new ClienteDAO();
         List lista = clienteDAO.listAll();
         clienteControle.setList(lista);
         jTable1.setModel(clienteControle);
 
-        initComponents();
-
     }
 
-    public void setTelaAnterior(JDlgcliente jDlgcliente) {
-        this.jDlgcliente = jDlgcliente;
+public void setTelaAnterior(JDlgcliente jDlgClientes) {
+        this.jDlgcliente = jDlgClientes;
     }
 
     /**

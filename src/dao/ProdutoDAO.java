@@ -18,7 +18,7 @@ public class ProdutoDAO extends DAO_Abstract {
 
     @Override
     public void insert(Object object) {
-        session.beginTransaction();
+             session.beginTransaction();
         session.save(object);
         session.getTransaction().commit();
     }
@@ -80,15 +80,14 @@ public class ProdutoDAO extends DAO_Abstract {
 
     }
 
-    public List listNomeEntrega(String nome, int entrega) {
-        session.beginTransaction();
+    public List listNomeEntrega(String sabor, int entrega) {
+         session.beginTransaction();
         Criteria criteria = session.createCriteria(ProdutoRsj.class);
-        criteria.add(Restrictions.like("nomeRsj", "%" + nome + "%"));
+        criteria.add(Restrictions.like("saborRsj", "%" + sabor + "%"));
         criteria.add(Restrictions.eq("entregaRsj", entrega));
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista;
-
     }
 
 }

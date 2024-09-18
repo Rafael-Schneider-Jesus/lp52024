@@ -282,15 +282,17 @@ public class JDlgProduto extends javax.swing.JDialog {
         jDlgProdutoPesquisa.setTelaAnterior(this);
         jDlgProdutoPesquisa.setVisible(true);
 
-        tools.Util.habilitar(true, jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jbtnExcluir, jBtnComfirmar, jBtnCancelar, jBtnAlterar, jCboEntrega, jtxtpreco);
+        tools.Util.habilitar(true, jbtnExcluir, jBtnComfirmar, jBtnCancelar, jBtnAlterar);
         tools.Util.habilitar(false, jBtnpesquisar, jBtnComfirmar, jBtnIncluir);
     }//GEN-LAST:event_jBtnpesquisarActionPerformed
 
     private void jBtnComfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnComfirmarActionPerformed
-        if (incluindo == true) {
-            produtoDAO.insert(viewBean());
+           ProdutoRsj produtoRsj = viewBean();
+        produtoDAO = new ProdutoDAO();   
+        if (incluindo == true) {              
+               produtoDAO.insert(produtoRsj);
         } else {
-            produtoDAO.upedate(viewBean());
+            produtoDAO.upedate(produtoRsj);
         }
 
         tools.Util.limp(jCbocopo, jCbotamanho, jtxtCodigo, jtxtsabor, jCboEntrega, jtxtpreco);
